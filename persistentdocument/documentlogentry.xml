@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd" 
+    model-version="1.0" icon="document_notebook" publish-on-day-change="false" 
+    table-name-oci="m_generic_doc_log" backoffice-indexable="false"  has-url="false">
+  <properties>
+    <add name="documentid" type="Integer" min-occurs="1" max-occurs="1" />
+    <add name="decision" type="String" min-occurs="0" max-occurs="1" />
+    <add name="actor" type="String" min-occurs="1" max-occurs="1" />
+    <add name="commentary" type="LongString" min-occurs="0" max-occurs="1" />
+  </properties>
+
+  <form>
+    <property name="label" display="readonly" />
+    <property name="documentid" display="readonly" />
+    <property name="actor" display="readonly" />
+    <property name="decision" display="readonly" />
+    <property name="commentary" display="readonly" />
+  </form>
+
+  <statuses default="PUBLICATED" />
+</document>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<action tal:content="action" />
+	<module tal:content="module" />
+	<status tal:content="status" />
+	<message tal:content="message" tal:attributes="alert alert" />
+	<id tal:condition="id" tal:content="id" />
+	<lang tal:condition="lang" tal:content="lang" />
+	<label tal:condition="label" tal:content="label" />
+	<parentref tal:condition="parentref" tal:content="parentref" />
+	<workinglang tal:condition="workinglang" tal:content="workinglang" />
+	<uilang tal:condition="uilang" tal:content="uilang" />
+	<span tal:condition="contents" tal:replace="contents" />
+	<span tal:condition="access" tal:replace="access" />
+</response>

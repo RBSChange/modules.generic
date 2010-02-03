@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="document-name">
+    <locale lang="fr">préférences</locale>
+    <locale lang="de">Präferenzen</locale>
+  </entity>
+  <entity id="edition-form-title">
+    <locale lang="fr">Edition d'une ligne de log</locale>
+    <locale lang="de">Bearbeitung einer Log Linie</locale>
+  </entity>
+  <entity id="label">
+    <locale lang="fr">libellé</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="label-help">
+    <locale lang="fr">libellé</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="documentid">
+    <locale lang="fr">Identifiant du document</locale>
+    <locale lang="de">Identifikation des Dokuments</locale>
+  </entity>
+  <entity id="documentid-help">
+    <locale lang="fr">Identifiant du document</locale>
+    <locale lang="de">Identifikation des Dokuments</locale>
+  </entity>
+  <entity id="decision">
+    <locale lang="fr">décision</locale>
+    <locale lang="de">Entscheidung</locale>
+  </entity>
+  <entity id="decision-help">
+    <locale lang="fr">décision</locale>
+    <locale lang="de">Entscheidung</locale>
+  </entity>
+  <entity id="actor">
+    <locale lang="fr">acteur</locale>
+    <locale lang="de">Darsteller</locale>
+  </entity>
+  <entity id="actor-help">
+    <locale lang="fr">acteur</locale>
+    <locale lang="de">Darsteller</locale>
+  </entity>
+  <entity id="commentary">
+    <locale lang="fr">commantaire</locale>
+    <locale lang="de">Kommentar</locale>
+  </entity>
+  <entity id="commentary-help">
+    <locale lang="fr">commantaire</locale>
+    <locale lang="de">Kommentar</locale>
+  </entity>
+</localization>

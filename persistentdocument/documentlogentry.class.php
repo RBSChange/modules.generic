@@ -1,0 +1,4 @@
+<?php
+class generic_persistentdocument_documentlogentry extends generic_persistentdocument_documentlogentrybase
+{
+}

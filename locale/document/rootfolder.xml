@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="document-name">
+    <locale lang="fr">dossier racine</locale>
+    <locale lang="en">root folder</locale>
+    <locale lang="de">Hauptordner</locale>
+  </entity>
+  <entity id="edition-form-title">
+    <locale lang="fr">propriétés du dossir racine</locale>
+    <locale lang="en">root folder properties</locale>
+    <locale lang="de">Eigenschaften Hauptordner</locale>
+  </entity>
+  <entity id="label">
+    <locale lang="fr">libellé</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="topics">
+    <locale lang="fr">rubriques associées</locale>
+  </entity>
+  <entity id="topics-help">
+    <locale lang="fr">sélectionnez ici les rubriques que vous voulez voir apparaitre dans ce module.</locale>
+  </entity>
+</localization>

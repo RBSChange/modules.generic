@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization><entity id="removetag-page"><locale lang="fr">removetag.page {tag} {lang} {documentlabel} {path}</locale></entity><entity id="log-removetag-page"><locale lang="fr">log-removetag-page</locale></entity><entity id="addtag-page"><locale lang="fr">addtag.page {tag} {lang} {documentlabel} {path}</locale></entity><entity id="log-addtag-page"><locale lang="fr">log-addtag-page</locale></entity></localization>

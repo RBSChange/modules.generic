@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding name="rootfolder" className="generic_RootfolderScriptDocumentElement" />
+	<binding name="systemfolder" className="generic_SystemfolderScriptDocumentElement" />
+	<binding name="folder" className="generic_FolderScriptDocumentElement" />
+	<binding name="documentlogentry" className="generic_DocumentlogentryScriptDocumentElement" />
+	<binding name="userAcl" className="generic_UserAclScriptDocumentElement" />
+	<binding name="groupAcl" className="generic_GroupAclScriptDocumentElement" />
+</script>

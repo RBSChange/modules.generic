@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
+  <actiondef modulename="generic" actionname="removetag.page" label="modules.generic.bo.useractionlogger.removetag-page"/>
+  <actiondef modulename="generic" actionname="addtag.page" label="modules.generic.bo.useractionlogger.addtag-page"/>
+</script>

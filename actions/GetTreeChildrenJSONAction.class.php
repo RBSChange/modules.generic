@@ -362,11 +362,11 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			$currentNode['label'] = $nodeAttributes['label'];
 		}
 		
-		if (!isset($nodeAttributes['block']))
+		if (!isset($nodeAttributes['block']) && $this->hasBlockClassNameFromType($currentNode['t']))
 		{
 			$nodeAttributes['block'] = $currentNode['t'];
 		}
-		if (!isset($nodeAttributes['htmllink']) && $isContextLangAvailable)
+		if (!isset($nodeAttributes['htmllink']) && $isContextLangAvailable && $persistantModel->hasURL())
 		{
 			$nodeAttributes['htmllink'] = '<a class="link" href="javascript:;" cmpref="' . $currentNode['i'] . '" lang="' . $lang . '" xml:lang="' . $lang . '">' . htmlspecialchars($label, ENT_NOQUOTES, 'UTF-8') . '</a>';
 		}
@@ -495,5 +495,15 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 	{
 		return $this->locateDocument;
 	}
-
+	
+	protected function hasBlockClassNameFromType($type)
+	{
+		$typeInfo = explode("_", $type);
+		if (count($typeInfo) == 3)
+		{
+			$className = $typeInfo[1].'_Block'.ucfirst($typeInfo[2]).'Action';
+			return f_util_ClassUtils::classExists($className);
+		}
+		return false;
+	}
 }

@@ -20,7 +20,15 @@ class generic_LoadRedirectInfoAction extends f_action_BaseJSONAction
 				
 				$urs = website_UrlRewritingService::getInstance();
 				$urs->beginOnlyUseRulesTemplates();
-				$generated = LinkHelper::getDocumentUrl($document, $lang);
+				try 
+				{
+					$generated = LinkHelper::getDocumentUrl($document, $lang);
+				}
+				catch (Exception $e)
+				{
+					Framework::warn(__METHOD__ . ' '. $e->getMessage());
+					$generated = '';
+				}
 				$urs->endOnlyUseRulesTemplates();
 				
 				$matches = array();

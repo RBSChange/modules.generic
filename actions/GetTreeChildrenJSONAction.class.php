@@ -124,11 +124,11 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			{
 				$virtualModels[$from][] = $modelName;
 			}
-		}
-		
+		}		
 		$documents = (count($treeNodeModels) > 0) ? $this->getTreeChildren($document, $treeNodeModels) : array();
 		if (count($virtualModels) > 0)
 		{
+			
 			foreach ($virtualModels as $from => $subModelNames) 
 			{
 				$documents = array_merge($documents, $this->getVirtualChildren($document, $subModelNames, $from));
@@ -273,6 +273,18 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 	 */
 	private function checkDocumentVisibility($document)
 	{
+		if ($document instanceof website_persistentdocument_websitetopicsfolder)
+		{
+			foreach ($document->getTopicsArray() as $topic) 
+			{
+				if ($this->checkDocumentVisibility($topic))
+				{
+					return true;
+				}
+			}
+			return false;			
+		}
+
 		$nodeId = $document->getId();
 		if (array_search($nodeId, $this->permissionned_nodes) !== false)
 		{

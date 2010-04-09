@@ -132,12 +132,11 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	}
 	
 	/**
-	 * @param String $modelName
-	 * @return Boolean
+	 * @return string[]
 	 */
-	public final function isModelCompatible($modelName)
+	public final function getAncestorModelNames()
 	{
-		return false;
+		return array();
 	}
 
 	/**

@@ -66,36 +66,39 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 	 */
 	public function mkdir($fromFolder, $relativePath)
 	{
-		if (f_util_StringUtils::isEmpty($relativePath) || $relativePath == "/")
+		if (f_util_StringUtils::isNotEmpty($relativePath))
 		{
-			throw new BadArgumentException("Nothing to create");
-		}
-		try
-		{
-			$this->getTransactionManager()->beginTransaction();
-			$pathParts = explode("/", $relativePath);
-			foreach ($pathParts as $pathPart)
+			try
 			{
-				$childFolder = $this->createQuery()->add(Restrictions::eq("label", $pathPart))->add(Restrictions::childOf($fromFolder->getId()))->findUnique();
-				if ($childFolder === null)
+				$this->getTransactionManager()->beginTransaction();
+				$pathParts = explode("/", $relativePath);
+				foreach ($pathParts as $pathPart)
 				{
-					$newFolder = $this->getNewDocumentInstance();
-					$newFolder->setLabel($pathPart);
-					$newFolder->save($fromFolder->getId());
-					$fromFolder = $newFolder;
-				}
-				else
-				{
+					$pathPart = trim($pathPart);
+					if (f_util_StringUtils::isEmpty($pathPart))
+					{
+						continue;
+					}
+					$query = $this->createQuery()
+						->add(Restrictions::eq("label", $pathPart))
+						->add(Restrictions::childOf($fromFolder->getId()));
+					$childFolder = f_util_ArrayUtils::firstElement($query->find());
+					if ($childFolder === null)
+					{
+						$childFolder = $this->getNewDocumentInstance();
+						$childFolder->setLabel($pathPart);
+						$childFolder->save($fromFolder->getId());
+					}
 					$fromFolder = $childFolder;
 				}
+				$this->getTransactionManager()->commit();
 			}
-			$this->getTransactionManager()->commit();
-			return $fromFolder;
+			catch (Exception $e)
+			{
+				$this->getTransactionManager()->rollBack($e);
+				throw $e;
+			}
 		}
-		catch (Exception $e)
-		{
-			$this->getTransactionManager()->rollBack($e);
-			throw $e;
-		}
+		return $fromFolder;
 	}
 }

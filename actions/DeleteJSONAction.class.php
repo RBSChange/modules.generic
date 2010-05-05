@@ -7,16 +7,15 @@ class generic_DeleteJSONAction extends f_action_BaseJSONAction
 	 */
 	public function _execute($context, $request)
 	{
-		$document = $this->getDocumentInstanceFromRequest($request);		
+		$document = DocumentHelper::getByCorrection($this->getDocumentInstanceFromRequest($request));		
 		$info = array();
-		$info['documentlabel'] = $document->getLabel();
-		if ($document->getPersistentModel()->useCorrection() && $document->getCorrectionofid())
+		$info['documentlabel'] = $document->getLabel();	
+		$documentToDelete = DocumentHelper::getCorrection($document);
+		if ($documentToDelete !== $document)
 		{
-			$info['correctionofid'] = $document->getCorrectionofid();
+			$info['correctionofid'] = $document->getId();
 		}
-		
-		$document->getDocumentService()->delete($document);	
-
+		$documentToDelete->delete($document);	
 		$this->logCustomDelete($document, $info);
 		if ($document->isDeleted())
 		{
@@ -32,28 +31,19 @@ class generic_DeleteJSONAction extends f_action_BaseJSONAction
 	protected function logCustomDelete($document, $info)
 	{		
 		$moduleName = $this->getModuleName();
-		
-		if ($document->isDeleted())
+		if (isset($info['correctionofid']))
 		{
-			if (isset($info['correctionofid']))
-			{
 				$actionName = 'deletecorrection';
-			}
-			else
-			{
-				$actionName = 'delete';
-			}
+		}		
+		else if ($document->isDeleted())
+		{
+			$actionName = 'delete';
 		}
 		else
 		{
 			$actionName = 'deletelocalization';
 		}
-		
-		if ($document instanceof f_persistentdocument_PersistentDocument)
-		{
-			$actionName .= '.' . strtolower($document->getPersistentModel()->getDocumentName());
-		}
-		
+		$actionName .= '.' . strtolower($document->getPersistentModel()->getDocumentName());
 		UserActionLoggerService::getInstance()->addCurrentUserDocumentEntry($actionName, $document, $info, $moduleName);
 	}
 	

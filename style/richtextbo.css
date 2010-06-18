@@ -154,3 +154,7 @@ body#richtext-body{
 	padding-left: 7px; 	
 	padding-right: 7px; 	
 }
+html, body {
+	background-image: none !important;
+	background-color: #fff !important;
+}

@@ -187,6 +187,16 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 	 */
 	protected function getVirtualChildren($document, $subModelNames, $propertyName)
 	{
+		if (f_util_ClassUtils::methodExists($document->getDocumentService(), 'getVirtualChildrenAt'))
+		{
+			$totalCount = $this->getTotal();
+			$startIndex = $this->getStartIndex();
+			$locateDocumentId = $this->getLocateDocument();
+			$result = $document->getDocumentService()->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount);
+			$this->setStartIndex($startIndex);
+			$this->setTotal($totalCount);
+			return $result;
+		}
 		$result = array();
 		$propertyValue = $document->getPersistentModel()->getProperty($propertyName);
 		if ($propertyValue)

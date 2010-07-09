@@ -11,17 +11,16 @@ class generic_InfoAction extends f_action_BaseJSONAction
 	protected function _execute($context, $request)
 	{
 		$result = array();
-		try
+		foreach ($this->getDocumentIdArrayFromRequest($request) as $documentId)
 		{
-			$rc = RequestContext::getInstance();
-			$documents = $this->getDocumentInstanceArrayFromRequest($request);
-			foreach ($documents as $document)
+			try
 			{
-				
+				$rc = RequestContext::getInstance();
+				$document = DocumentHelper::getDocumentInstance($documentId);	
 				$resultInfo = array('id' => $document->getId(), 
 					'model' => $document->getDocumentModelName(), 
-					'lang' => $document->getLang(),
-					'icon' =>$document->getPersistentModel()->getIcon());
+					'lang' => $document->getLang(), 
+					'icon' => $document->getPersistentModel()->getIcon());
 				
 				if ($document->isLocalized())
 				{
@@ -40,13 +39,12 @@ class generic_InfoAction extends f_action_BaseJSONAction
 				{
 					$resultInfo['labels'] = array($document->getLang() => $document->getTreeNodeLabel());
 				}
-				
 				$result[] = $resultInfo;
 			}
-		}
-		catch (Exception $e)
-		{
-			Framework::exception($e);
+			catch (Exception $e)
+			{
+				Framework::exception($e);
+			}
 		}
 		
 		return $this->sendJSON($result);
@@ -74,6 +72,10 @@ class generic_InfoAction extends f_action_BaseJSONAction
 			{
 				$docIds = array(intval($docIds));
 			}
+			else
+			{
+				$docIds = array();
+			}
 		}
 		elseif (is_int($docIds))
 		{
@@ -92,6 +94,10 @@ class generic_InfoAction extends f_action_BaseJSONAction
 					unset($docIds[$index]);
 				}
 			}
+		}
+		else
+		{
+			$docIds = array();
 		}
 		return $docIds;
 	}

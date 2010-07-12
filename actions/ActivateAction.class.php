@@ -36,6 +36,19 @@ class generic_ActivateAction extends f_action_BaseAction
 	}
 	
 	/**
+	 * @see f_action_BaseAction::getSecureNodeIds()
+	 *
+	 * @return unknown
+	 */
+	protected function getSecureNodeIds()
+	{
+		$id = $this->getDocumentIdFromRequest($this->getContext()->getRequest());
+		$doc = DocumentHelper::getByCorrectionId($id);
+		return array($doc->getId());
+	}
+
+	
+	/**
 	 * @return Boolean
 	 */
 	protected function suffixSecureActionByDocument()

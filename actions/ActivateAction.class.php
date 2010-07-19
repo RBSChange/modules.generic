@@ -38,7 +38,7 @@ class generic_ActivateAction extends f_action_BaseAction
 	/**
 	 * @see f_action_BaseAction::getSecureNodeIds()
 	 *
-	 * @return unknown
+	 * @return Integer[]
 	 */
 	protected function getSecureNodeIds()
 	{

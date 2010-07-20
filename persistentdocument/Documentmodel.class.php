@@ -16,21 +16,38 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 			$name, $type, $minOccurs, $maxOccurs, $dbMapping, $dbTable, 
 			$primaryKey, $cascadeDelete, $treeNode,	$Array, $Document, $defaultValue, $constraints, $localized, $indexed, $specificIndex, $fromList)
 		*/
+
+		$this->m_statuses = array('DRAFT','CORRECTION','ACTIVE','PUBLICATED','DEACTIVATED','FILED','DEPRECATED','TRASH','WORKFLOW',);
+	}
+	
+	protected final function loadProperties()
+	{
 		$this->m_properties = array(
 			'id' => new PropertyInfo('id', 'Integer', 1, 1, 'document_id', 'f_document', 
 				true, false, false, false, false, null, 'blank:false', false, false, false, null),
 			'model' => new PropertyInfo('model', 'String', 1, 1, 'document_model', 'f_document', 
 				false, false, false, false, false, null, 'blank:false;maxSize:255', false, false, false, null));
-		
-		$this->m_formProperties = array();
-		
-		$this->m_childrenProperties = array();
-		
-		$this->m_statuses = array('DRAFT','CORRECTION','ACTIVE','PUBLICATED','DEACTIVATED','FILED','DEPRECATED','TRASH','WORKFLOW',);
-
-		$this->m_invertProperties = array();
-	
 	}
+	
+	protected final function loadSerialisedProperties()
+	{
+		$this->m_serialisedproperties = array();	
+	}
+	
+	protected final function loadFormProperties()
+	{
+		$this->m_formProperties = array();	
+	}
+	
+	protected final function loadInvertProperties()
+	{
+		$this->m_invertProperties = array();
+	}	
+	
+	protected final function loadChildrenProperties()
+	{
+		$this->m_childrenProperties = array();
+	}	
 	
 	static function getGenericDocumentPropertiesNames()
 	{
@@ -178,50 +195,6 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	public final function getWorkflowParameters()
 	{
 		return array();
-	}
-
-	/**
-	 * @return array<mixed>
-	 */	
-	public final function getSynchronize()
-	{
-		return array();
-	}
-	
-	/**
-	 * @return String
-	 */
-	public function __toString()
-	{
-		return $this->getName();
-	}
-	
-	
-	/**
-	 * @deprecated use isLocalized()
-	 * @return Boolean
-	 */
-	public final function isInternationalized()
-	{
-		return false;
-	}
-	
-	/**
-	 * @deprecated For compatibility only
-	 * @return String
-	 */
-	public final function getComponentClassName()
-	{
-		return null;
-	}
-	
-	/**
-	 * @deprecated For compatibility only
-	 * @return String
-	 */
-	public final function getClassName()
-	{
-		return null;
 	}
 	
 	/**

@@ -1,22 +1,19 @@
 <?php
 class generic_RenameAction extends f_action_BaseAction
-{
-	
+{	
 	protected function getDocumentIdArrayFromRequest($request)
 	{
 		$docIds = array();
 		$labels = $request->getParameter(K::LABEL_ACCESSOR);
 
-		$ds = $this->getDocumentService();
-		foreach ($labels as $id => $label)
+		foreach (array_keys($labels) as $id)
 		{
-			list($id, $lang) = explode('/', $id);
+			list($id, ) = explode('/', $id);
 			$docIds[] = intval($id);
 		}
 		
 		return $docIds;
 	}
-	
 	
 	/**
 	 * @param Context $context
@@ -29,7 +26,7 @@ class generic_RenameAction extends f_action_BaseAction
 		$ds = $this->getDocumentService();
 		foreach ($labels as $id => $label)
 		{
-			list($id, $lang) = explode('/', $id);
+			list($id, ) = explode('/', $id);
 			$document = $ds->getDocumentInstance($id);
 			$document->setLabel($label);
 			$document->save();
@@ -44,5 +41,4 @@ class generic_RenameAction extends f_action_BaseAction
 	{
 		return true;
 	}
-	
 }

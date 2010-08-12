@@ -39,7 +39,7 @@ class generic_GroupAclService extends f_persistentdocument_DocumentService
 	 * @param generic_persistentdocument_groupAcl $document
 	 * @param Integer $parentNodeId
 	 */
-	protected function preSave($document, $parentNodeId = null)
+	protected function preSave($document, $parentNodeId)
 	{
 		$document->setLabel($document->getGroup()->getId().'#'.$document->getRole().'#'.$document->getDocumentId());
 	}
@@ -48,7 +48,7 @@ class generic_GroupAclService extends f_persistentdocument_DocumentService
 	 * @param generic_persistentdocument_groupAcl $document
 	 * @param Integer $parentNodeId
 	 */
-	protected function postSave($document, $parentNodeId = null)
+	protected function postSave($document, $parentNodeId)
 	{
 		$this->pp->compileACL($document);
 	}

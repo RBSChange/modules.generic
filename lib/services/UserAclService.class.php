@@ -40,7 +40,7 @@ class generic_UserAclService extends f_persistentdocument_DocumentService
 	 * @param generic_persistentdocument_userAcl $document
 	 * @param Integer $parentNodeId
 	 */
-	protected function preSave($document, $parentNodeId = null)
+	protected function preSave($document, $parentNodeId)
 	{
 		$document->setLabel($document->getUser()->getId().'#'.$document->getRole().'#'.$document->getDocumentId());
 	}
@@ -49,7 +49,7 @@ class generic_UserAclService extends f_persistentdocument_DocumentService
 	 * @param generic_persistentdocument_userAcl $document
 	 * @param Integer $parentNodeId
 	 */
-	protected function postSave($document, $parentNodeId = null)
+	protected function postSave($document, $parentNodeId)
 	{
 		$this->pp->compileACL($document);
 	}

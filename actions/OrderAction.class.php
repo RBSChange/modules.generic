@@ -36,7 +36,6 @@ class generic_OrderAction extends f_action_BaseAction
 		return self::getSuccessView();
 	}
 
-
 	/**
 	 * @param integer $parentId
 	 * @param array<id=>order> $childrenOrder
@@ -78,7 +77,7 @@ class generic_OrderAction extends f_action_BaseAction
 
 		// Recreate relations with the right order
 		$pos = 0;
-		foreach ($actualChildrenOrder as $id => $tmp)
+		foreach (array_keys($actualChildrenOrder) as $id)
 		{
 			$pos++;
 			$parent->{'set' . ucfirst($relationName)}($pos, DocumentHelper::getDocumentInstance($id));
@@ -87,7 +86,6 @@ class generic_OrderAction extends f_action_BaseAction
 		// Save the document
 		$parent->save();
 	}
-
 
 	/**
 	 * @param integer $parentId

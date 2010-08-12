@@ -43,7 +43,7 @@ class generic_SystemfolderService extends f_persistentdocument_DocumentService
 	{
 	    $package = ModuleService::getInstance()->getPersistentProvider()->getSettingPackage($systemFolder->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
 
-	    list($owner, $related) = explode('/', $package);
+	    list($owner, ) = explode('/', $package);
 
 		return ModuleService::getInstance()->getShortModuleName($owner);
 	}
@@ -56,7 +56,7 @@ class generic_SystemfolderService extends f_persistentdocument_DocumentService
 	{
 	    $package = ModuleService::getInstance()->getPersistentProvider()->getSettingPackage($systemFolder->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
 
-	    list($owner, $related) = explode('/', $package);
+	    list(, $related) = explode('/', $package);
 
 		return ModuleService::getInstance()->getShortModuleName($related);
 	}

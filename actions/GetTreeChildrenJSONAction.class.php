@@ -390,7 +390,7 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 		}
 		if (!isset($nodeAttributes['htmllink']) && $isContextLangAvailable && $persistantModel->hasURL())
 		{
-			$nodeAttributes['htmllink'] = '<a class="link" href="javascript:;" cmpref="' . $currentNode['i'] . '" lang="' . $lang . '" xml:lang="' . $lang . '">' . htmlspecialchars($label, ENT_NOQUOTES, 'UTF-8') . '</a>';
+			$nodeAttributes['htmllink'] = '<a class="link" href="#" rel="cmpref:' . $currentNode['i'] . '" lang="' . $lang . '">' . htmlspecialchars($label, ENT_NOQUOTES, 'UTF-8') . '</a>';
 		}
 		
 		if (!isset($nodeAttributes['hasWorkflow']) && $persistantModel->getWorkflowStartTask() !== null)

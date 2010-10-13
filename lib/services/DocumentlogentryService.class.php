@@ -46,7 +46,6 @@ class generic_DocumentlogentryService extends f_persistentdocument_DocumentServi
 	 */
 	public function addLogEntry($documentId, $actorName, $actionLabel, $decision = '', $commentary = '')
 	{
-		// TODO : test
 		if (empty($documentId) || empty($actorName) || empty($actionLabel))
 		{
 			if (Framework::isDebugEnabled())

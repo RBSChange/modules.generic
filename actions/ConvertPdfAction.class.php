@@ -1,8 +1,10 @@
 <?php
-class generic_ConvertPdfAction extends generic_Action
+class generic_ConvertPdfAction extends f_action_BaseAction
 {
-	private $configuration;
-	
+	/**
+	 * @param Context $context
+	 * @param Request $request
+	 */
 	public function _execute($context, $request)
 	{
 		$controller = $context->getController();
@@ -10,7 +12,6 @@ class generic_ConvertPdfAction extends generic_Action
 		$url = base64_decode($request->getParameter('url'));
 		$url = str_replace('&amp;', '&', $url);
 		
-		$pdfFile = null;
 		$pdfService = UrlPDFService::getInstance();
 		
 		$serverIp = $this->getConfigParameter('server_ip');
@@ -27,7 +28,9 @@ class generic_ConvertPdfAction extends generic_Action
 		try
 		{
 			$pdfConfiguration = $this->getConfiguration();
-			$pdfService->setUserConnection($pdfConfiguration['user'])->setPasswordConnection($pdfConfiguration['password'])->setCustomerConnection($pdfConfiguration['customer']);
+			$pdfService->setUserConnection($pdfConfiguration['user']);
+			$pdfService->setPasswordConnection($pdfConfiguration['password']);
+			$pdfService->setCustomerConnection($pdfConfiguration['customer']);
 			
 			$pdfService->setCachePath(WEBEDIT_HOME . DIRECTORY_SEPARATOR . MediaHelper::ROOT_MEDIA_PATH . CHANGE_CACHE_PDF);
 			$pdfService->forceHTMLFormat();
@@ -35,6 +38,11 @@ class generic_ConvertPdfAction extends generic_Action
 		}
 		catch (Exception $e)
 		{
+			$pdfFile = null;
+			if (Framework::isDebugEnabled())
+			{
+				Framework::debug(__METHOD__ . ' EXCEPTION: ' . $e->getMessage());
+			}
 			echo f_Locale::translate("&framework.pdf.messages.error;");
 		}
 		
@@ -53,51 +61,49 @@ class generic_ConvertPdfAction extends generic_Action
 	 */
 	private function getConfigParameter($parameterName, $defaultValue = null)
 	{
-		try
+		$conf = $this->getConfiguration();
+		if (isset($conf[$parameterName]))
 		{
-			$this->loadConfiguration();
-			if (isset($this->configuration[$parameterName]))
-			{
-				return $this->configuration[$parameterName];
-			}
-		}
-		catch (Exception $e)
-		{
-			// Nothing to do
+			return $conf[$parameterName];
 		}
 		return $defaultValue;
 	}
 	
 	/**
+	 * @var array
 	 */
-	private function loadConfiguration()
-	{
-		try
+	private $configuration;
+		
+	/**
+	 * @return array
+	 */
+	private function getConfiguration()
 		{
 			if ($this->configuration === null)
 			{
+			try
+			{
 				$this->configuration = Framework::getConfiguration('pdf');
 			}
-		}
 		catch (Exception $e)
 		{
 			Framework::exception($e->getMessage());
 		}
 	}
-	
-	/**
-	 */
-	private function getConfiguration()
-	{
-		$this->loadConfiguration();
 		return $this->configuration;
 	}
 	
+	/**
+	 * @return string
+	 */
 	public function getRequestMethods()
 	{
 		return Request::GET;
 	}
 	
+	/**
+	 * @return boolean
+	 */
 	public function isSecure()
 	{
 		return false;

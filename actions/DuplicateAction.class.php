@@ -1,7 +1,6 @@
 <?php
 class generic_DuplicateAction extends f_action_BaseJSONAction
 {
-	
     /**
      * @param Context $context
 	 * @param Request $request

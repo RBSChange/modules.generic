@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd" 
-    model-version="1.0" icon="document" use-correction="false" linked-to-root-module="false"
-    has-url="true" indexable="false" backoffice-indexable="true"
-    publish-on-day-change="true" >
+	model-version="1.0" icon="document" use-correction="false" linked-to-root-module="false" has-url="true" indexable="false"
+	backoffice-indexable="true" publish-on-day-change="true">
 	<properties>
 		<add name="label" type="String" min-occurs="1" db-mapping="document_label" db-size="255" />
 		<add name="author" type="String" db-mapping="document_author" db-size="50" />
@@ -33,18 +32,18 @@
 	
   <!-- Deprecated -->
   <form>
-  	<property name="label" required="true" size="50"/>
-  	<property name="author" display="hidden"/>
-  	<property name="authorid" display="hidden"/>
-  	<property name="creationdate" display="hidden"/>
-  	<property name="modificationdate" display="hidden"/>
-  	<property name="publicationstatus" display="hidden"/>
-  	<property name="startpublicationdate" display="hidden"/>
-  	<property name="endpublicationdate" display="hidden"/>
-  	<property name="metas" display="hidden"/>
-  	<property name="lang" display="hidden"/>
-  	<property name="modelversion" display="hidden"/>
-  	<property name="documentversion" display="hidden"/>
-  	<property name="metastring" display="hidden"/>
+		<property name="label" required="true" size="50" />
+		<property name="author" display="hidden" />
+		<property name="authorid" display="hidden" />
+		<property name="creationdate" display="hidden" />
+		<property name="modificationdate" display="hidden" />
+		<property name="publicationstatus" display="hidden" />
+		<property name="startpublicationdate" display="hidden" />
+		<property name="endpublicationdate" display="hidden" />
+		<property name="metas" display="hidden" />
+		<property name="lang" display="hidden" />
+		<property name="modelversion" display="hidden" />
+		<property name="documentversion" display="hidden" />
+		<property name="metastring" display="hidden" />
   </form>
 </document>

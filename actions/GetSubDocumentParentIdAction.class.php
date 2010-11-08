@@ -1,10 +1,8 @@
 <?php
 class generic_GetSubDocumentParentIdAction extends f_action_BaseJSONAction
 {
-	
 	/**
 	 * @see f_action_BaseAction::_execute()
-	 *
 	 * @param Context $context
 	 * @param Request $request
 	 */

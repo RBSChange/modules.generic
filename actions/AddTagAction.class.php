@@ -27,6 +27,9 @@ class generic_AddTagAction extends f_action_BaseAction
 		return true;
 	}
 
+	/**
+	 * @return integer[]
+	 */
 	protected function getSecureNodeIds()
 	{
 		$request = $this->getContext()->getRequest();
@@ -40,44 +43,25 @@ class generic_AddTagAction extends f_action_BaseAction
 
 			if ($ts->isExclusiveTag($tag))
 			{
-				try
-				{
-					$oldDocument = $ts->getDocumentByExclusiveTag($tag);
-					if (!in_array($oldDocument->getId(), $docIds))
+				$oldDocument = $ts->getDocumentByExclusiveTag($tag, false);
+				if ($oldDocument !== null && !in_array($oldDocument->getId(), $docIds))
 					{
 						$docIds[] = $oldDocument->getId();
 					}
 				}
-				catch (Exception $e)
-				{
-					//Tag is not affected
-				}
-			}
-
-			if (f_util_ClassUtils::methodExists($ts, 'getContextualDocumentIdByTag'))
+			else if ($ts->isContextualTag($tag))
 			{
 				foreach ($docIds as $docId)
 				{
-					if ($ts->isContextualTag($tag))
-					{
-						try
-						{
 							$contextualDocument = DocumentHelper::getDocumentInstance($ts->getContextualDocumentIdByTag($docId, $tag));
-							$oldDocument = $ts->getDocumentByContextualTag($tag, $contextualDocument);
-							if (!in_array($oldDocument->getId(), $docIds))
+					$oldDocument = $ts->getDocumentByContextualTag($tag, $contextualDocument, false);
+					if ($oldDocument !== null && !in_array($oldDocument->getId(), $docIds))
 							{
 								$docIds[] = $oldDocument->getId();
 							}
 						}
-						catch (Exception $e)
-						{
-							//Tag is not affected
-						}
 					}
 				}
-			}
-		}
-
 		return $docIds;
 	}
 }

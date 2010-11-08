@@ -78,7 +78,7 @@ class generic_ExportAction extends f_action_BaseAction
 
 				}
 
-				$this->currentRow++;
+				$this->currentRow += 1;
 				foreach (array_values($array) as $value)
 				{
 					$string .= "\"".utf8_decode(str_replace(array("\n", "\r"), "", f_util_StringUtils::htmlToText($value, false)))."\"".$this->separator;

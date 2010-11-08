@@ -198,6 +198,8 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			return $result;
 		}
 		$result = array();
+		
+		// Direct property.
 		$propertyValue = $document->getPersistentModel()->getProperty($propertyName);
 		if ($propertyValue)
 		{
@@ -214,11 +216,19 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 				}
 			}			
 		}
-		else if ($propertyValue = $document->getPersistentModel()->getInverseProperty($propertyName))
+		else
+		{
+			// Inverse property.
+			$propertyValue = $document->getPersistentModel()->getInverseProperty($propertyName);
+			if ($propertyValue)
 		{
 			$result = $document->{'get' . ucfirst($propertyName) . 'ArrayInverse'}();
 		}
-		else if ($propertyValue = $document->getPersistentModel()->getSerializedProperty($propertyName))
+			else
+			{
+				// Serialized property.
+				$propertyValue = $document->getPersistentModel()->getSerializedProperty($propertyName);
+				if ($propertyValue)
 		{
 			if ($propertyValue->isArray())
 			{
@@ -233,12 +243,15 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 				}
 			}				
 		}
+				// Method on document.
 		else if (f_util_ClassUtils::methodExists($document, $getterName = 'get'.ucfirst($propertyName)))
 		{
 			$result = $document->{$getterName}();
 			if (!is_array($result))
 			{
 				$result = array($result);
+					}
+				}
 			}
 		}
 		

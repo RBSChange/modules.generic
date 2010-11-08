@@ -1,7 +1,6 @@
 <?php
 class generic_PreviewImageAction extends f_action_BaseAction
 {
-	
 	/**
 	 * @param Context $context
 	 * @param Request $request

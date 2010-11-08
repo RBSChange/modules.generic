@@ -1,10 +1,8 @@
 <?php
 class generic_InfoAction extends f_action_BaseJSONAction
 {
-	
 	/**
 	 * @see f_action_BaseAction::_execute()
-	 *
 	 * @param Context $context
 	 * @param Request $request
 	 */
@@ -17,10 +15,12 @@ class generic_InfoAction extends f_action_BaseJSONAction
 			{
 				$rc = RequestContext::getInstance();
 				$document = DocumentHelper::getDocumentInstance($documentId);	
-				$resultInfo = array('id' => $document->getId(), 
+				$resultInfo = array(
+					'id' => $document->getId(),
 					'model' => $document->getDocumentModelName(), 
 					'lang' => $document->getLang(), 
-					'icon' => $document->getPersistentModel()->getIcon());
+					'icon' => $document->getPersistentModel()->getIcon()
+				);
 				
 				if ($document->isLocalized())
 				{
@@ -52,9 +52,7 @@ class generic_InfoAction extends f_action_BaseJSONAction
 	
 	/**
 	 * Returns an array of the documents IDs received by this action.
-	 *
-	 * All the IDs contained in the resulting array are REAL integer values, not
-	 * strings.
+	 * All the IDs contained in the resulting array are REAL integer values, not strings.
 	 *
 	 * @param Request $request
 	 * @return array<integer>
@@ -89,7 +87,7 @@ class generic_InfoAction extends f_action_BaseJSONAction
 				{
 					$docIds[$index] = intval($docId);
 				}
-				else if (! is_int($docId))
+				else if (!is_int($docId))
 				{
 					unset($docIds[$index]);
 				}

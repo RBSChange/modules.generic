@@ -1,10 +1,8 @@
 <?php
 class generic_ExportCsvAction extends generic_ExportAction
 {
-	
     /**
      * Generic CSV export feature.
-     * 
      * @param Context $context
 	 * @param Request $request
 	 * @return unknown
@@ -20,7 +18,7 @@ class generic_ExportCsvAction extends generic_ExportAction
 	/**
 	 * @return Boolean
 	 */
-	protected function suffixSecureActionByDocument()
+	protected function isDocumentAction()
 	{
 		return true;
 	}

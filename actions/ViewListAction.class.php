@@ -58,7 +58,7 @@ class generic_ViewListAction extends f_action_BaseAction
 	/**
 	 * @return Boolean
 	 */
-	protected function suffixSecureActionByDocument()
+	protected function isDocumentAction()
 	{
 		return true;
 	}

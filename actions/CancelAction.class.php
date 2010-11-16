@@ -20,7 +20,7 @@ class generic_CancelAction extends f_action_BaseAction
 	/**
 	 * @return Boolean
 	 */
-	protected function suffixSecureActionByDocument()
+	protected function isDocumentAction()
 	{
 		return true;
 	}

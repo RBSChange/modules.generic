@@ -1,10 +1,8 @@
 <?php
 /**
- * generic_RemoveTagsAction
- * This class is used to execute the RemoveTags action that is able to remove
- * tags to multiple documents at once.
+ * generic_RemoveTagJSONAction
  */
-class generic_RemoveTagAction extends f_action_BaseAction
+class generic_RemoveTagJSONAction extends f_action_BaseJSONAction
 {
 	/**
 	 * @param Context $context
@@ -12,18 +10,20 @@ class generic_RemoveTagAction extends f_action_BaseAction
 	 */
 	public function _execute($context, $request)
 	{
+		$result = array();
+		
 		$doc = $this->getDocumentInstanceFromRequest($request);
 		$tag  = $request->getParameter('tag');
 		TagService::getInstance()->removeTag($doc, $tag);
 		$this->logAction($doc, array('tag' => $tag));
 	
-		return self::getSuccessView();
+		return $this->sendJSON($result);
 	}
 
 	/**
 	 * @return Boolean
 	 */
-	protected function suffixSecureActionByDocument()
+	protected function isDocumentAction()
 	{
 		return true;
 	}

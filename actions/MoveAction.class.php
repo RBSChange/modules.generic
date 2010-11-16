@@ -22,7 +22,7 @@ class generic_MoveAction extends f_action_BaseJSONAction
 	/**
 	 * @return Boolean
 	 */
-	protected function suffixSecureActionByDocument()
+	protected function isDocumentAction()
 	{
 		return true;
 	}

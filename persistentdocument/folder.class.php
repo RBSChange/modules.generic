@@ -11,11 +11,11 @@ class generic_persistentdocument_folder extends generic_persistentdocument_folde
 	    $blocClass = $moduleName .'_BlockFolderAction';
 		if (f_util_ClassUtils::classExists($blocClass))
 	    {
-	        $nodeAttributes[f_tree_parser_AttributesBuilder::BLOCK_ATTRIBUTE] = 'modules_' . $moduleName . '_folder';
+	        $nodeAttributes['block'] = 'modules_' . $moduleName . '_folder';
 	    }
 	    else
 	    {
-	        $nodeAttributes[f_tree_parser_AttributesBuilder::BLOCK_ATTRIBUTE] = '';
+	        $nodeAttributes['block'] = '';
 	    }
 	    
 		if ($treeType == 'wlist')

@@ -28,7 +28,7 @@ class generic_OrderJSONAction extends f_action_BaseJSONAction
 			}
 			else
 			{
-				$parentNode = f_persistentdocument_PersistentTreeNode::getInstanceByDocument($parent);
+				$parentNode = TreeService::getInstance()->getInstanceByDocument($parent);
 				TreeService::getInstance()->order($parentNode, $childrenOrder);
 			}
 		}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.document.documentlogentry" lcid="fr_FR">
+  <key id="document-name">préférences</key>
+  <key id="edition-form-title">Edition d'une ligne de log</key>
+  <key id="label">libellé</key>
+  <key id="label-help">libellé</key>
+  <key id="documentid">Identifiant du document</key>
+  <key id="documentid-help">Identifiant du document</key>
+  <key id="decision">décision</key>
+  <key id="decision-help">décision</key>
+  <key id="actor">acteur</key>
+  <key id="actor-help">acteur</key>
+  <key id="commentary">commantaire</key>
+  <key id="commentary-help">commantaire</key>
+</i18n>

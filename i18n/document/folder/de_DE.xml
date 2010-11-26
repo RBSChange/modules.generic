@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.document.folder" lcid="de_DE">
+  <key id="document-name">Ordner</key>
+  <key id="edition-form-title">Eigenschaften Ordner</key>
+  <key id="label">Name</key>
+  <key id="label-help">Name des Ordners</key>
+  <key id="description">Beschreibung</key>
+  <key id="description-help">Beschreibung des Ordners</key>
+</i18n>

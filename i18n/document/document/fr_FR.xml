@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.document.document" lcid="fr_FR">
+  <key id="label">libellé</key>
+  <key id="author">auteur</key>
+  <key id="creationdate">date de création</key>
+  <key id="modificationdate">date de dernière modification</key>
+  <key id="publicationstatus">statut de publication</key>
+  <key id="startpublicationdate">Début de publication</key>
+  <key id="startpublicationdate-help">A partir de cette date, le document sera publié. Si le champ est vide, la publication du document commencera dès maintenant.</key>
+  <key id="endpublicationdate">Fin de publication</key>
+  <key id="endpublicationdate-help">A partir de cette date, le document ne sera plus publié. Si le champ est vide, le document restera indéfiniment publié.</key>
+  <key id="lang">langue</key>
+</i18n>

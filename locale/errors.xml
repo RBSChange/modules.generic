@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<localization>
-	<entity id="folder.Cannot-delete-non-empty-node">
-		<locale lang="fr">Vous ne pouvez pas supprimer un dossier contenant des documents.</locale>
-	</entity>
-</localization>

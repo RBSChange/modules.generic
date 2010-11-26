@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.document.folder" lcid="en_GB">
+  <key id="edition-form-title">folder properties</key>
+  <key id="label">label</key>
+  <key id="label-help">folder label</key>
+  <key id="description">description</key>
+  <key id="description-help">folder description</key>
+</i18n>

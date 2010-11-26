@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.document.rootfolder" lcid="fr_FR">
+  <key id="document-name">dossier racine</key>
+  <key id="edition-form-title">propriétés du dossir racine</key>
+  <key id="label">libellé</key>
+  <key id="topics">rubriques associées</key>
+  <key id="topics-help">sélectionnez ici les rubriques que vous voulez voir apparaitre dans ce module.</key>
+</i18n>

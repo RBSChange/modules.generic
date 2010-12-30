@@ -4,4 +4,6 @@
   <key id="log-removetag-page">log-removetag-page</key>
   <key id="addtag-page">addtag.page {tag} {lang} {documentlabel} {path}</key>
   <key id="log-addtag-page">log-addtag-page</key>
+  <key id="addtag-website">addtag.website {tag} {lang} {documentlabel}</key>
+  <key id="log-addtag-website">log addtag website</key>
 </i18n>

@@ -54,4 +54,28 @@ class generic_GetDocumentHistoryAction extends f_action_BaseJSONAction
 		
 		return $datas;
 	}
+
+	/**
+	 * @param array $logs
+	 * @return array
+	 */
+	protected function sortLogs($logs)
+	{
+		usort($logs, array($this, 'compareLogEntries'));
+		return $logs;
+	}
+	
+	/**
+	 * @param array $a
+	 * @param array $b
+	 * @return integer
+	 */
+	public function compareLogEntries($a, $b)
+	{
+		if ($a['entry_date'] == $b['entry_date'])
+		{
+			return 0; 
+		}
+		return (($a['entry_date'] > $b['entry_date']) ? -1 : 1);
+	}
 }

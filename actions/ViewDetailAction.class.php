@@ -9,11 +9,10 @@ class generic_ViewDetailAction extends f_action_BaseAction
 	{
 		$document = $this->getDocumentInstanceFromRequest($request);
 		$page = null;
-
 		// retrieve the page to display
 		if (!is_null($document))
 		{
-			$page = $document->getDocumentService()->getDisplayPage($document);
+			$page = $document->getDocumentService()->getDisplayPage($document);			
 		}
 
 		if (!is_null($page))

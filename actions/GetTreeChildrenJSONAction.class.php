@@ -385,8 +385,7 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 		
 		$this->addPermissionInfo($document, $currentNode);
 		$nodeAttributes = array();
-		
-		$document->buildTreeAttributes($this->getModuleName(), $this->treeType, $nodeAttributes);
+		$document->getDocumentService()->addTreeAttributes($document, $this->getModuleName(), $this->treeType, $nodeAttributes);
 		if (isset($nodeAttributes['s']))
 		{
 			$currentNode['s'] = $nodeAttributes['s'];

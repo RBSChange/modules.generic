@@ -4,4 +4,5 @@
   <actiondef modulename="generic" actionname="removetag.page" label="modules.generic.bo.useractionlogger.removetag-page"/>
   <actiondef modulename="generic" actionname="addtag.page" label="modules.generic.bo.useractionlogger.addtag-page"/>
   <actiondef modulename="generic" actionname="addtag.website" label="m.generic.bo.useractionlogger.addtag-website"/>
+  <actiondef modulename="generic" actionname="addtag.menu" label="m.generic.bo.useractionlogger.addtag-menu"/>
 </script>

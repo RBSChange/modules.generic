@@ -101,4 +101,28 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 		}
 		return $fromFolder;
 	}
+	
+	/**
+	 * @param generic_persistentdocument_folder $document
+	 * @param string $moduleName
+	 * @param string $treeType
+	 * @param array<string, string> $nodeAttributes
+	 */	
+	public function addTreeAttributes($document, $moduleName, $treeType, &$nodeAttributes)
+	{
+	    $blocClass = $moduleName .'_BlockFolderAction';
+		if (f_util_ClassUtils::classExists($blocClass))
+	    {
+	        $nodeAttributes['block'] = 'modules_' . $moduleName . '_folder';
+	    }
+	    else
+	    {
+	        $nodeAttributes['block'] = '';
+	    }
+	    
+		if ($treeType == 'wlist')
+		{
+	    	$nodeAttributes['thumbnailsrc'] = MediaHelper::getIcon('folder');
+		}	    
+	}
 }

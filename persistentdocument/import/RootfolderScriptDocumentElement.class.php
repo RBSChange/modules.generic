@@ -36,7 +36,7 @@ class generic_RootfolderScriptDocumentElement extends import_ScriptDocumentEleme
 			$rootFolder = $this->getPersistentDocument();
 			foreach ($this->topics as $topicId)
 			{
-				$topic = import_ScriptReader::getInstance()->getElementById($topicId)->getPersistentDocument();
+				$topic = $this->script->getElementById($topicId)->getPersistentDocument();
 				$rootFolder->addTopics($topic);
 			}
 			$rootFolder->save();

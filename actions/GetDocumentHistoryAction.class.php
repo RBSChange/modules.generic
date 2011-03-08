@@ -29,6 +29,7 @@ class generic_GetDocumentHistoryAction extends f_action_BaseJSONAction
 		foreach ($rows as $row) 
 		{
 			$logEntry = unserialize($row['info']);
+			$logEntry['entry_id'] = $row['entry_id'];
 			$logEntry['logdescription'] = f_Locale::translateUI('&modules.' . $row['module_name']. '.bo.useractionlogger.' .ucfirst(str_replace('.', '-',$row['action_name'])) .';', $logEntry);
 			$logEntry['entry_date'] = $row['entry_date'];
 			$logEntry['date'] = date_DateFormat::format(date_Converter::convertDateToLocal($row['entry_date']), 'd/m/Y H:i');
@@ -56,6 +57,23 @@ class generic_GetDocumentHistoryAction extends f_action_BaseJSONAction
 	}
 
 	/**
+	 * @param array[] $logsArray
+	 * @return array
+	 */
+	protected function mergeLogs($logsArray)
+	{
+		$mergedLogs = array();
+		foreach ($logsArray as $logs)
+		{
+			foreach ($logs as $log)
+			{
+				$mergedLogs[$log['entry_id']] = $log;
+			}
+		}	
+		return $this->sortLogs(array_values($mergedLogs));
+	}
+
+	/**
 	 * @param array $logs
 	 * @return array
 	 */
@@ -74,7 +92,7 @@ class generic_GetDocumentHistoryAction extends f_action_BaseJSONAction
 	{
 		if ($a['entry_date'] == $b['entry_date'])
 		{
-			return 0; 
+			return (($a['entry_id'] > $b['entry_id']) ? -1 : 1); 
 		}
 		return (($a['entry_date'] > $b['entry_date']) ? -1 : 1);
 	}

@@ -9,22 +9,22 @@ class generic_ViewDetailAction extends f_action_BaseAction
 	{
 		$document = $this->getDocumentInstanceFromRequest($request);
 		$page = null;
-		// retrieve the page to display
-		if (!is_null($document))
+
+		// Retrieve the page to display.
+		if ($document !== null)
 		{
-			$page = $document->getDocumentService()->getDisplayPage($document);			
+			$page = $document->getDocumentService()->getDisplayPage($document);
 		}
 
-		if (!is_null($page))
+		if ($page !== null)
 		{
 			$model = $document->getPersistentModel();
-			if ($model->isInjectedModel() && 
-				$this->getModuleName($request) != $model->getOriginalModuleName())
+			if ($model->isInjectedModel() && $this->getModuleName($request) != $model->getOriginalModuleName())
 			{
-				$request->setParameter($model->getOriginalModuleName()."Param", array("cmpref" => $document->getId()));
+				$request->setParameter($model->getOriginalModuleName().'Param', array('cmpref' => $document->getId()));
 			}
-			
-			//set pageref parameter into the request
+				
+			// Set pageref parameter into the request.
 			$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
 			$module = 'website';
 			$action = 'Display';
@@ -35,7 +35,7 @@ class generic_ViewDetailAction extends f_action_BaseAction
 			$action = AG_ERROR_404_ACTION;
 		}
 
-		// finally, forward the execution to $module / $action
+		// Finally, forward the execution to $module / $action.
 		$context->getController()->forward($module, $action);
 		return View::NONE;
 	}
@@ -45,9 +45,9 @@ class generic_ViewDetailAction extends f_action_BaseAction
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{
-		$moduleName   = $this->getModuleName($request);
+		$moduleName = $this->getModuleName($request);
 		$modulesParams = $request->getParameter($moduleName.'Param');
-		$ids = $modulesParams[K::COMPONENT_ID_ACCESSOR];
+		$ids = $modulesParams['cmpref'];
 		if (!is_array($ids))
 		{
 			$ids = explode(',', $ids);
@@ -55,6 +55,9 @@ class generic_ViewDetailAction extends f_action_BaseAction
 		return $ids;
 	}
 
+	/**
+	 * @return Boolean
+	 */
 	public function isSecure()
 	{
 		return false;

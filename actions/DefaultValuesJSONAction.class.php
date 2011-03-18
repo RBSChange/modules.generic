@@ -38,6 +38,10 @@ class generic_DefaultValuesJSONAction extends f_action_BaseJSONAction
 		return uixul_DocumentEditorService::getInstance()->exportFieldsData($document, $allowedProperties);
 	}
 	
+	/**
+	 * @param integer $documentId
+	 * @return string
+	 */
 	protected function getSecureActionName($documentId)
 	{
 		$secureAction = parent::getSecureActionName($documentId);		
@@ -45,12 +49,6 @@ class generic_DefaultValuesJSONAction extends f_action_BaseJSONAction
 		$modelName = $request->getParameter('modelname');
 		$model = f_persistentdocument_PersistentDocumentModel::getInstanceFromDocumentModelName($modelName);	
 		$secureAction .= '.' . $model->getDocumentName();
-
-		if (Framework::isDebugEnabled())
-		{
-			Framework::debug(__METHOD__ . "($modelName) -> $secureAction");
-		}
-		
 		return $secureAction;
 	}
 	
@@ -63,7 +61,7 @@ class generic_DefaultValuesJSONAction extends f_action_BaseJSONAction
 	protected function getDocumentIdArrayFromRequest($request)
 	{	
 		$docIds = array();
-		$parentNodeId = $request->getParameter(K::PARENT_ID_ACCESSOR);
+		$parentNodeId = $request->getParameter('parentref');
 		if (empty($parentNodeId) || !is_numeric($parentNodeId) )
 		{
 			$parentNodeId = ModuleService::getInstance()->getRootFolderId($this->getModuleName($request));

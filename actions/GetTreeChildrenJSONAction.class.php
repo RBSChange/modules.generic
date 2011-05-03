@@ -396,9 +396,13 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			$currentNode['label'] = $nodeAttributes['label'];
 		}
 		
-		if (!isset($nodeAttributes['block']) && $this->hasBlockClassNameFromType($currentNode['t']))
+		if (!isset($nodeAttributes['block']))
 		{
-			$nodeAttributes['block'] = $currentNode['t'];
+			$models = block_BlockService::getInstance()->getBlocksDocumentModelToInsert();
+			if (isset($models[$modelName]))
+			{
+				$nodeAttributes['block'] = f_util_ArrayUtils::firstElement($models[$modelName]);
+			}
 		}
 		if (!isset($nodeAttributes['htmllink']) && $isContextLangAvailable && $persistantModel->hasURL())
 		{
@@ -535,8 +539,9 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 		$typeInfo = explode("_", $type);
 		if (count($typeInfo) == 3)
 		{
-			$className = $typeInfo[1].'_Block'.ucfirst($typeInfo[2]).'Action';
-			return f_util_ClassUtils::classExists($className);
+			$models = block_BlockService::getInstance()->getBlocksDocumentModelToInsert();
+			return isset($models[$typeInfo[0] . '_' . $typeInfo[1] .  '/' . $typeInfo[2]]);
+			
 		}
 		return false;
 	}

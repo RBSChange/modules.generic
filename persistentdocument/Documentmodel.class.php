@@ -214,12 +214,4 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	{
 		return f_persistentdocument_DocumentService::getInstance();
 	}
-	
-	/**
-	 * @return null
-	 */
-	public function getEditModule()
-	{
-		return null;
-	}
 }

@@ -129,6 +129,17 @@ class generic_RootfolderService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
+	 * @param Integer $documentId
+	 * @return String 
+	 */
+	public function getModuleNameById($documentId)
+	{
+		$package = $this->pp->getSettingPackage($documentId, ModuleService::SETTING_ROOT_FOLDER_ID);
+		// "modules_..."
+		return substr($package, 8);
+	}
+	
+	/**
 	 * @return generic_RootfolderService
 	 */
 	public static function getInstance()

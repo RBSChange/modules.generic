@@ -97,6 +97,14 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	{
 		return '&modules.generic.document.Document.document-name;';
 	}
+
+	/**
+	 * @return String
+	 */
+	public final function getLabelKey()
+	{
+		return 'm.generic.document.Document.document-name';
+	}
 	
 	/**
 	 * @return String

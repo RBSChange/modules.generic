@@ -5,8 +5,7 @@ class generic_Setup extends object_InitDataSetup
 	{
 		try
 		{
-			//$scriptReader = import_ScriptReader::getInstance();
-			//$scriptReader->executeModuleScript('generic', 'init.xml');
+			$this->executeModuleScript('lists.xml');
 		}
 		catch (Exception $e)
 		{

@@ -7,16 +7,17 @@ class generic_CheckUniqueRedirectUrlAction extends f_action_BaseJSONAction
 	 */
 	public function _execute($context, $request)
     {
-		$document = $this->getDocumentInstanceFromRequest($request);
-		$websiteId = $document->getDocumentService()->getWebsiteId($document);
-		if ($websiteId === null) {$websiteId = 0;}
+		$website = $this->getDocumentInstanceFromRequest($request);
+		$websiteId = $website->getId();
 		$checkUrl = $request->getParameter('from_url');
-		//rule_id, document_id, document_lang, website_id, to_url, redirect_type
-		$urlInfo = $this->getPersistentProvider()->getPageForUrl($checkUrl, $websiteId);
+		$lang = RequestContext::getInstance()->getLang();
+		
+		//rule_id, origine, modulename, actionname, document_id, website_lang, website_id, to_url, redirect_type
+		$urlInfo = $this->getPersistentProvider()->getUrlRewritingInfoByUrl($checkUrl, $websiteId, $lang);
 		if ($urlInfo !== null)
 		{
 			return $this->sendJSON($urlInfo);
 		}
-		return $this->sendJSON(array('websiteId' => $websiteId, 'checkUrl' => $checkUrl));
+		return $this->sendJSON(array('website_id' => $websiteId, 'checkUrl' => $checkUrl));
     }
 }

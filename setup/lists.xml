@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />	
+	
+	<systemfolder module="list" relatedmodule="generic">
+		<staticlist listid="modules_generic/publicationstatus" label="f.persistentdocument.status.label">
+				<staticitem label="f.persistentdocument.status.draft" value="DRAFT"/>
+				<staticitem label="f.persistentdocument.status.workflow" value="WORKFLOW"/>
+				<staticitem label="f.persistentdocument.status.active" value="ACTIVE"/>
+				<staticitem label="f.persistentdocument.status.publicated" value="PUBLICATED"/>
+				<staticitem label="f.persistentdocument.status.deactivated" value="DEACTIVATED"/>
+				<staticitem label="f.persistentdocument.status.correction" value="CORRECTION"/>
+				<staticitem label="f.persistentdocument.status.deprecated" value="DEPRECATED"/>
+				<staticitem label="f.persistentdocument.status.filed" value="FILED"/>
+				<staticitem label="f.persistentdocument.status.trash" value="TRASH"/>
+		</staticlist>
+	</systemfolder>
+</script>

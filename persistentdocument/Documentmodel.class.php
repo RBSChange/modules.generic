@@ -222,4 +222,20 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	{
 		return f_persistentdocument_DocumentService::getInstance();
 	}
+	
+	/**
+	 * @return Boolean
+	 */
+	public final function hasURL()
+	{
+		return false;
+	}
+	
+	/**
+	 * @return Boolean
+	 */
+	public final function useRewriteURL()
+	{
+		return false;
+	}
 }

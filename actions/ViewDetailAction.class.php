@@ -3,7 +3,7 @@ class generic_ViewDetailAction extends f_action_BaseAction
 {
 	/**
 	 * @param Context $context
-	 * @param Request $request
+	 * @param ChangeRequest $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -17,13 +17,17 @@ class generic_ViewDetailAction extends f_action_BaseAction
 		}
 
 		if ($page !== null)
-		{
-			$model = $document->getPersistentModel();
-			if ($model->isInjectedModel() && $this->getModuleName($request) != $model->getOriginalModuleName())
+		{	
+			foreach ($document->getPersistentModel()->getAncestorModelNames() as $modelName)
 			{
-				$request->setParameter($model->getOriginalModuleName().'Param', array('cmpref' => $document->getId()));
+				$parts = f_persistentdocument_PersistentDocumentModel::getModelInfo($modelName);
+				$moduleName = $parts['module'];
+				if (!$request->hasModuleParameter($moduleName, 'cmpref'))
+				{
+					$request->setModuleParameter($moduleName, 'cmpref', $document->getId());
+				}
 			}
-				
+		
 			// Set pageref parameter into the request.
 			$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
 			$module = 'website';
@@ -45,7 +49,7 @@ class generic_ViewDetailAction extends f_action_BaseAction
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{
-		$moduleName = $this->getModuleName($request);
+		$moduleName = $this->getModuleName();
 		$modulesParams = $request->getParameter($moduleName.'Param');
 		$ids = $modulesParams['cmpref'];
 		if (!is_array($ids))

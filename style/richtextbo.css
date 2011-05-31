@@ -140,6 +140,16 @@ a.media-flash-dummy{
 	color: #000;
 	background: url(/media/backoffice/flash-logo.png) #F8F8FF center no-repeat;
 }
+a.document-dummy{
+	display: inline-block;
+	border: 1px solid silver;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	vertical-align: bottom;
+	background: url(/media/changeicons/small/document.png) ghostwhite center no-repeat;
+	-moz-background-size: 48px 48px;
+}
 object{
 	display: block;
 	border: 1px dotted orange;

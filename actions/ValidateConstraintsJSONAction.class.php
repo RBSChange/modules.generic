@@ -9,6 +9,7 @@ class generic_ValidateConstraintsJSONAction extends f_action_BaseJSONAction
 	{
 		$data = $request->getParameter('data', '');
 		$constraintArray = $request->getParameter('constraints', array());
+		RequestContext::getInstance()->setLang(RequestContext::getInstance()->getUILang());
 		if (f_util_ArrayUtils::isNotEmpty($constraintArray))
 		{
 			$constraints = implode(';', $constraintArray);

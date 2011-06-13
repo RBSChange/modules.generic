@@ -32,7 +32,7 @@ class generic_GetDocumentHistoryAction extends f_action_BaseJSONAction
 			$logEntry['entry_id'] = $row['entry_id'];
 			$logEntry['logdescription'] = f_Locale::translateUI('&modules.' . $row['module_name']. '.bo.useractionlogger.' .ucfirst(str_replace('.', '-',$row['action_name'])) .';', $logEntry);
 			$logEntry['entry_date'] = $row['entry_date'];
-			$logEntry['date'] = date_DateFormat::format(date_Converter::convertDateToLocal($row['entry_date']), 'd/m/Y H:i');
+			$logEntry['date'] = date_Formatter::toDefaultDateTimeBO(date_Converter::convertDateToLocal($row['entry_date']));
 			$logs[] = $logEntry;
 		}
 		return $logs;
@@ -49,8 +49,8 @@ class generic_GetDocumentHistoryAction extends f_action_BaseJSONAction
 		$datas['id'] = $document->getId();
 		$datas['lang'] = $document->getLang();
 		$datas['documentversion'] = $document->getDocumentversion();
-		$datas['creationdate'] = date_DateFormat::format($document->getUICreationdate(), 'd/m/Y H:i');
-		$datas['modificationdate'] = date_DateFormat::format($document->getUIModificationdate(), 'd/m/Y H:i');
+		$datas['creationdate'] = date_Formatter::toDefaultDateTimeBO($document->getUICreationdate());
+		$datas['modificationdate'] = date_Formatter::toDefaultDateTimeBO($document->getUIModificationdate());
 		$datas['author'] = $document->getAuthor();
 		
 		return $datas;

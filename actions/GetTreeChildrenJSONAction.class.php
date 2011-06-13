@@ -423,7 +423,12 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 					$getter = ucfirst(str_replace(array('-', '.'), '', $columnName));
 					if (f_util_ClassUtils::methodExists($document, 'getUI' . $getter))
 					{
-						$nodeAttributes[$columnName] = $document->{'getUI' . $getter}();
+						$value = $document->{'getUI' . $getter}();
+						if (is_string($value) && strlen($value) === 19)
+						{
+							$value = date_Formatter::toDefaultDateTimeBO($value);
+						}
+						$nodeAttributes[$columnName] = $value;
 					}
 					elseif (f_util_ClassUtils::methodExists($document, 'get' . $getter))
 					{

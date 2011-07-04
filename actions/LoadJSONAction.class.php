@@ -15,10 +15,10 @@ class generic_LoadJSONAction extends f_action_BaseJSONAction
 		$requestedProperties = explode(',', $request->getParameter('documentproperties', ''));
 		foreach ($requestedProperties as $propertyName)
 		{
-			if (!in_array($propertyName, $allowedProperties))
-			{
-				$allowedProperties[] = $propertyName;
-			}
+			if (f_util_StringUtils::isEmpty($propertyName)) {continue;}
+			if (in_array($propertyName, $allowedProperties)) {continue;}
+			
+			$allowedProperties[] = $propertyName;
 		}
 		
 		$data = $this->exportFieldsData($document, $allowedProperties);

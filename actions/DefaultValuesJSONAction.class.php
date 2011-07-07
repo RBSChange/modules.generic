@@ -22,20 +22,21 @@ class generic_DefaultValuesJSONAction extends f_action_BaseJSONAction
 				$allowedProperties[] = $propertyName;
 			}
 		}
-		
-		$data = $this->exportFieldsData($document, $allowedProperties);
-		
+		$parentId = $request->getParameter('parentref');
+		$parentId = (empty($parentId) || !is_numeric($parentId) ) ? null : intval($parentId);
+		$data = $this->exportFieldsData($document, $allowedProperties, $parentId);	
 		return $this->sendJSON($data);
 	}
 	
 	/**
 	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param String[]
+	 * @param String[] $allowedProperties
+	 * @param integer $parentId
 	 * @return Array
 	 */
-	protected function exportFieldsData($document, $allowedProperties)
+	protected function exportFieldsData($document, $allowedProperties, $parentId = null)
 	{
-		return uixul_DocumentEditorService::getInstance()->exportFieldsData($document, $allowedProperties);
+		return uixul_DocumentEditorService::getInstance()->exportFieldsData($document, $allowedProperties, $parentId);
 	}
 	
 	/**

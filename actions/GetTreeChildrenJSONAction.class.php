@@ -260,7 +260,7 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			$result2 = array();
 			foreach ($result as $document) 
 			{
-				if (in_array($document->getPersistentModel()->getOriginalModelName(), $subModelNames))
+				if (in_array($document->getPersistentModel()->getName(), $subModelNames))
 				{
 					$result2[] = $document;
 				}

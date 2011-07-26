@@ -125,4 +125,72 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 	    	$nodeAttributes['thumbnailsrc'] = MediaHelper::getIcon('folder');
 		}	    
 	}
+	
+	/**
+	 * @param integer $rootFolderId
+	 * @param dtring $dateString
+	 * @return generic_persistentdocument_folder
+	 */
+	public function getFolderOfDate($rootFolderId, $dateString = null)
+	{
+		$dateCalendar = date_Calendar::getInstance($dateString);
+
+		$pp = $this->getPersistentProvider();
+
+		// Search if folders exist
+		$folderDay = $this->createQuery()->add(Restrictions::descendentOf($rootFolderId))
+			->add(Restrictions::eq('label', date_Formatter::format($dateCalendar, 'Y-m-d')))
+			->findUnique();
+
+		if ($folderDay === null)
+		{
+			$this->folderService = generic_FolderService::getInstance();
+
+			// Year folder
+			$folderYear = $this->createQuery()->add(Restrictions::childOf($rootFolderId))
+				->add(Restrictions::eq('label', date_Formatter::format($dateCalendar, 'Y')))
+				->findUnique();
+
+			if ($folderYear === null)
+			{
+				// Create the year, month and the day folders
+				$folderYear = $this->createFolder($rootFolderId, date_Formatter::format($dateCalendar, 'Y'));
+				$folderMonth = $this->createFolder($folderYear->getId(), date_Formatter::format($dateCalendar, 'Y-m'));
+				$folderDay = $this->createFolder($folderMonth->getId(), date_Formatter::format($dateCalendar, 'Y-m-d'));
+			}
+			else
+			{
+				// Month folder
+				$folderMonth = $this->createQuery()->add(Restrictions::childOf($folderYear->getId()))
+					->add(Restrictions::eq('label', date_Formatter::format($dateCalendar, 'Y-m')))
+					->findUnique();
+
+				if ($folderMonth === null)
+				{
+					// Create the month and the day folders
+					$folderMonth = $this->createFolder($folderYear->getId(), date_Formatter::format($dateCalendar, 'Y-m'));
+					$folderDay = $this->createFolder($folderMonth->getId(), date_Formatter::format($dateCalendar, 'Y-m-d'));
+				}
+				else
+				{
+					$folderDay = $this->createFolder($folderMonth->getId(), date_Formatter::format($dateCalendar, 'Y-m-d'));
+				}
+			}
+		}
+
+		return $folderDay;
+	}
+	
+	/**
+	 * @param integer $parentFolderId
+	 * @param string $label
+	 * @return generic_persistentdocument_folder
+	 */
+	private function createFolder($parentFolderId, $label)
+	{
+		$folder = $this->getNewDocumentInstance();
+		$folder->setLabel($label);
+		$folder->save($parentFolderId);
+		return $folder;
+	}
 }

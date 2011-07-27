@@ -30,21 +30,4 @@
 		<add name="TRASH" />
 		<add name="WORKFLOW" />
 	</statuses>
-	
-  <!-- Deprecated -->
-  <form>
-		<property name="label" required="true"/>
-		<property name="author" display="hidden" />
-		<property name="authorid" display="hidden" />
-		<property name="creationdate" display="hidden" />
-		<property name="modificationdate" display="hidden" />
-		<property name="publicationstatus" display="hidden" />
-		<property name="startpublicationdate" display="hidden" />
-		<property name="endpublicationdate" display="hidden" />
-		<property name="metas" display="hidden" />
-		<property name="lang" display="hidden" />
-		<property name="modelversion" display="hidden" />
-		<property name="documentversion" display="hidden" />
-		<property name="metastring" display="hidden" />
-  </form>
 </document>

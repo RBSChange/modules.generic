@@ -34,11 +34,6 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 		$this->m_serialisedproperties = array();	
 	}
 	
-	protected final function loadFormProperties()
-	{
-		$this->m_formProperties = array();	
-	}
-	
 	protected final function loadInvertProperties()
 	{
 		$this->m_invertProperties = array();

@@ -1,9 +1,9 @@
 <?php
-class generic_ViewTagAction extends f_action_BaseAction
+class generic_ViewTagAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param ChangeRequest $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -29,7 +29,7 @@ class generic_ViewTagAction extends f_action_BaseAction
 					$moduleName = 	$model->getModulename();
 					$request->setModuleParameter($moduleName, 'cmpref', $document->getId());
 					$context->getController()->forward($moduleName, 'ViewDetail');
-					return View::NONE;
+					return change_View::NONE;
 				}		
 			} 
 			catch (Exception $e) 
@@ -43,7 +43,7 @@ class generic_ViewTagAction extends f_action_BaseAction
 		}
 		// Finally, forward the execution to $module / $action.
 		$context->getController()->forward('website', 'Error404');
-		return View::NONE;
+		return change_View::NONE;
 	}
 	
 	/**

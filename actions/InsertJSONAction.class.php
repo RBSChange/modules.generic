@@ -1,10 +1,10 @@
 <?php
-class generic_InsertJSONAction extends f_action_BaseJSONAction
+class generic_InsertJSONAction extends change_JSONAction
 {
 
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -53,7 +53,7 @@ class generic_InsertJSONAction extends f_action_BaseJSONAction
 	/**
 	 * Returns an array of the documents IDs received by this action.
 	 * All the IDs contained in the resulting array are REAL integer values, not strings.
-	 * @param Request $request
+	 * @param change_Request $request
 	 * @return array<integer>
 	 */
 	protected function getDocumentIdArrayFromRequest($request)

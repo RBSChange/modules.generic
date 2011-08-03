@@ -1,10 +1,10 @@
 <?php
-class generic_GetSubDocumentParentIdAction extends f_action_BaseJSONAction
+class generic_GetSubDocumentParentIdAction extends change_JSONAction
 {
 	/**
 	 * @see f_action_BaseAction::_execute()
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	protected function _execute($context, $request)
 	{

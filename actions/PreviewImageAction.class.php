@@ -1,14 +1,14 @@
 <?php
-class generic_PreviewImageAction extends f_action_BaseAction
+class generic_PreviewImageAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	protected function _execute($context, $request)
 	{
 		f_web_http_Header::setStatus(404);
-		return View::NONE;
+		return change_View::NONE;
 	}	
 	
 	public function isSecure()

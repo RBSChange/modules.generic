@@ -1,9 +1,9 @@
 <?php
-class generic_ViewListAction extends f_action_BaseAction
+class generic_ViewListAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -31,11 +31,11 @@ class generic_ViewListAction extends f_action_BaseAction
 		$context->getController()->forward($module, $action);
 
 		// no view here since the content is rendered by the page module
-		return View::NONE;
+		return change_View::NONE;
 	}
 
 	/**
-	 * @param Request $request
+	 * @param change_Request $request
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{

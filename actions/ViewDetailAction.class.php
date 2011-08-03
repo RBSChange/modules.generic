@@ -1,9 +1,9 @@
 <?php
-class generic_ViewDetailAction extends f_action_BaseAction
+class generic_ViewDetailAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param ChangeRequest $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -41,11 +41,11 @@ class generic_ViewDetailAction extends f_action_BaseAction
 
 		// Finally, forward the execution to $module / $action.
 		$context->getController()->forward($module, $action);
-		return View::NONE;
+		return change_View::NONE;
 	}
 
 	/**
-	 * @param Request $request
+	 * @param change_Request $request
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{

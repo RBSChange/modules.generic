@@ -1,9 +1,9 @@
 <?php
-class generic_ConvertPdfAction extends f_action_BaseAction
+class generic_ConvertPdfAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -51,7 +51,7 @@ class generic_ConvertPdfAction extends f_action_BaseAction
 			$controller->redirectToUrl("/publicmedia/" . CHANGE_CACHE_PDF . DIRECTORY_SEPARATOR . $pdfFile);
 		}
 		
-		return View::NONE;
+		return change_View::NONE;
 	}
 	
 	/**
@@ -98,7 +98,7 @@ class generic_ConvertPdfAction extends f_action_BaseAction
 	 */
 	public function getRequestMethods()
 	{
-		return Request::GET;
+		return change_Request::GET;
 	}
 	
 	/**

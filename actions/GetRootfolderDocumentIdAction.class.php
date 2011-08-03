@@ -1,9 +1,9 @@
 <?php
-class generic_GetRootfolderDocumentIdAction extends f_action_BaseAction
+class generic_GetRootfolderDocumentIdAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -23,6 +23,6 @@ class generic_GetRootfolderDocumentIdAction extends f_action_BaseAction
 		}
 
 		echo f_util_StringUtils::JSONEncode($result);
-		return View::NONE;
+		return change_View::NONE;
 	}
 }

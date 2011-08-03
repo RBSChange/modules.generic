@@ -35,8 +35,8 @@ class generic_ViewDetailAction extends f_action_BaseAction
 		}
 		else
 		{
-			$module = AG_ERROR_404_MODULE;
-			$action = AG_ERROR_404_ACTION;
+			$module = 'website';
+			$action = 'Error404';
 		}
 
 		// Finally, forward the execution to $module / $action.

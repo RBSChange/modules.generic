@@ -42,7 +42,7 @@ class generic_ViewTagAction extends f_action_BaseAction
 			Framework::error(__METHOD__ . ' parameter tagName not defined');
 		}
 		// Finally, forward the execution to $module / $action.
-		$context->getController()->forward(AG_ERROR_404_MODULE, AG_ERROR_404_ACTION);
+		$context->getController()->forward('website', 'Error404');
 		return View::NONE;
 	}
 	

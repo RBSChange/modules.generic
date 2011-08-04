@@ -32,7 +32,7 @@ class generic_ConvertPdfAction extends change_Action
 			$pdfService->setPasswordConnection($pdfConfiguration['password']);
 			$pdfService->setCustomerConnection($pdfConfiguration['customer']);
 			
-			$pdfService->setCachePath(WEBEDIT_HOME . DIRECTORY_SEPARATOR . MediaHelper::ROOT_MEDIA_PATH . CHANGE_CACHE_PDF);
+			$pdfService->setCachePath(PROJECT_HOME . DIRECTORY_SEPARATOR . MediaHelper::ROOT_MEDIA_PATH . CHANGE_CACHE_PDF);
 			$pdfService->forceHTMLFormat();
 			$pdfFile = $pdfService->getPDF($url);
 		}

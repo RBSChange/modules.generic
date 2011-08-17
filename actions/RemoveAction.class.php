@@ -7,7 +7,7 @@ class generic_RemoveAction extends change_JSONAction
 	 */
 	public function _execute($context, $request)
 	{
-		$parentdoc = DocumentHelper::getDocumentInstance($request->getParameter(K::PARENT_ID_ACCESSOR));
+		$parentdoc = DocumentHelper::getDocumentInstance($request->getParameter('parentref'));
 		$docIds   = $this->getDocumentIdArrayFromRequest($request);
 		$result = array();
 		foreach ($docIds as $docId)

@@ -29,7 +29,7 @@ class generic_ViewDetailAction extends change_Action
 			}
 		
 			// Set pageref parameter into the request.
-			$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
+			$request->setParameter('pageref', $page->getId());
 			$module = 'website';
 			$action = 'Display';
 		}

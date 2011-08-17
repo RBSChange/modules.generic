@@ -59,7 +59,7 @@ class generic_InfoAction extends change_JSONAction
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{
-		$docIds = $request->getParameter(K::COMPONENT_ID_ACCESSOR, array());
+		$docIds = $request->getParameter(change_Request::DOCUMENT_ID, array());
 		if (is_string($docIds))
 		{
 			if (strpos($docIds, ',') !== false)

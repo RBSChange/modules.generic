@@ -17,7 +17,7 @@ class generic_ViewListAction extends change_Action
 
 		if (!is_null($page) )
 		{
-			$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
+			$request->setParameter('pageref', $page->getId());
 			$module = 'website';
 			$action = 'Display';
 		}
@@ -41,7 +41,7 @@ class generic_ViewListAction extends change_Action
 	{
 		$moduleName   = $this->getModuleName($request);
 		$modulesParams = $request->getParameter($moduleName.'Param');
-		$ids = $modulesParams[K::COMPONENT_ID_ACCESSOR];
+		$ids = $modulesParams[change_Request::DOCUMENT_ID];
 		if (!is_array($ids))
 		{
 			$ids = explode(',', $ids);

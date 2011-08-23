@@ -11,13 +11,13 @@ class generic_SavePermissionsJSONAction extends change_JSONAction
 		$moduleName = $this->getModuleName($request);
 		$document = $this->getDocumentInstanceFromRequest($request);
 		$id = $document->getId();
-		$rs = f_permission_PermissionService::getRoleServiceByModuleName($moduleName);
+		$rs = change_PermissionService::getRoleServiceByModuleName($moduleName);
 		
 		$data = array('id' => $id);
 		
 		if (!is_null($rs))
 		{
-			$ps = f_permission_PermissionService::getInstance();
+			$ps = change_PermissionService::getInstance();
 			// Permissions are redefined on this node...
 			$modifiedRoles = $ps->clearNodePermissions($id, 'modules_'.$moduleName);
 			$roles = $rs->getRoles();

@@ -30,7 +30,7 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 	{
 		$moduleName = $this->getModuleName();
 		$result = array();
-		$ps = f_permission_PermissionService::getInstance();
+		$ps = change_PermissionService::getInstance();
 		$defId = $ps->getDefinitionPointForPackage($documentId, 'modules_'.$moduleName);
 		if ($defId === null)
 		{

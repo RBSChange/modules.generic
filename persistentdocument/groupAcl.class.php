@@ -1,5 +1,5 @@
 <?php
-class generic_persistentdocument_groupAcl extends generic_persistentdocument_groupAclbase implements f_permission_ACL 
+class generic_persistentdocument_groupAcl extends generic_persistentdocument_groupAclbase
 {
 	public function getAccessorId()
 	{

@@ -313,7 +313,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		{
 			$backEndUser = $this->getCurrentBackEndUser();
 			$permission = $this->getPermissionName($document);
-			$result = f_permission_PermissionService::getInstance()->hasPermission($backEndUser, $permission, $nodeId);
+			$result = change_PermissionService::getInstance()->hasPermission($backEndUser, $permission, $nodeId);
 			return $result;
 		}
 		return true;
@@ -452,12 +452,12 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		if (array_search($document->getId(), $this->permissionned_nodes) !== false)
 		{
 			$currentNode['r'] = true;
-			$ps = f_permission_PermissionService::getInstance();
+			$ps = change_PermissionService::getInstance();
 			$permissions = $ps->getPermissionsForUserByDefPointNodeId($this->getCurrentBackEndUser(), $document->getId());
 			
-			if (count($permissions) === 1 && $permissions[0] === f_permission_PermissionService::ALL_PERMISSIONS)
+			if (count($permissions) === 1 && $permissions[0] === change_PermissionService::ALL_PERMISSIONS)
 			{
-				$currentNode['pe'] = array(f_permission_PermissionService::ALL_PERMISSIONS => true);
+				$currentNode['pe'] = array(change_PermissionService::ALL_PERMISSIONS => true);
 			}
 			else if (count($permissions) == 0)
 			{

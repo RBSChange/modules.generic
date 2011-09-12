@@ -91,12 +91,6 @@ a.link:active{
 	outline: none;
 }
 
-/* Déclaration pour IE qui assimile l'état :focus à l'état :active */ 
-a:focus, a:active{ 
-	background: #3399ff;
-	color: #ffffff !important;	
-}
-
 h1.title, .heading-one,
 h2.title, .heading-two,
 h3.title, .heading-three,

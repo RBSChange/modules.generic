@@ -13,25 +13,7 @@ class generic_ViewDetailAction extends change_Action
 		// Retrieve the page to display.
 		if ($document !== null)
 		{
-			$page = $document->getDocumentService()->getDisplayPage($document);
-		}
-
-		if ($page !== null)
-		{	
-			foreach ($document->getPersistentModel()->getAncestorModelNames() as $modelName)
-			{
-				$parts = f_persistentdocument_PersistentDocumentModel::getModelInfo($modelName);
-				$moduleName = $parts['module'];
-				if (!$request->hasModuleParameter($moduleName, 'cmpref'))
-				{
-					$request->setModuleParameter($moduleName, 'cmpref', $document->getId());
-				}
-			}
-		
-			// Set pageref parameter into the request.
-			$request->setParameter('pageref', $page->getId());
-			$module = 'website';
-			$action = 'Display';
+			list($module, $action) = $document->getDocumentService()->getResolveDetail($document, $request);
 		}
 		else
 		{

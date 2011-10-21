@@ -33,7 +33,7 @@ class generic_SavePermissionsJSONAction extends change_JSONAction
 					{	
 						if( intval($accessor) > 0)
 						{
-							$doc = $ps->getDocumentInstance(intval($accessor));
+							$doc = DocumentHelper::getDocumentInstance(intval($accessor));
 							if ( $doc instanceof users_persistentdocument_user )
 							{
 								$modifiedRoles[] = $roleName;

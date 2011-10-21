@@ -60,7 +60,7 @@ class generic_RootfolderService extends f_persistentdocument_DocumentService
 			//Ajout des nouveaux
 			foreach ($topics as $topic)
 			{
-				$website = website_WebsiteModuleService::getInstance()->getParentWebsite($topic);
+				$website = website_WebsiteService::getInstance()->getByDocument($topic);
 				if (isset($searchArray[$website->getId()]))
 				{
 					$websiteTopic = $searchArray[$website->getId()];

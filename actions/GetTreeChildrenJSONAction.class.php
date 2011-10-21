@@ -197,6 +197,19 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 			$this->setTotal($totalCount);
 			return $result;
 		}
+		
+		$moduleService = ModuleBaseService::getInstanceByModuleName($this->getModuleName());
+		if ($moduleService !== null && f_util_ClassUtils::methodExists($moduleService, 'getVirtualChildrenAt'))
+		{
+			$totalCount = $this->getTotal();
+			$startIndex = $this->getStartIndex();
+			$locateDocumentId = $this->getLocateDocument();
+			$result = $moduleService->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount);
+			$this->setStartIndex($startIndex);
+			$this->setTotal($totalCount);
+			return $result;
+		}
+		
 		$result = array();
 		
 		// Direct property.
@@ -328,7 +341,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	}
 	
 	/**
-	 * @return users_persistentdocument_backenduser
+	 * @return users_persistentdocument_user
 	 */
 	private function getCurrentBackEndUser()
 	{

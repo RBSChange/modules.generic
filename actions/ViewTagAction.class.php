@@ -16,7 +16,7 @@ class generic_ViewTagAction extends change_Action
 			{
 				if ($ts->isContextualTag($tagName))
 				{
-					$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+					$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 					$document = $ts->getDocumentByContextualTag($tagName, $website);
 				}
 				else

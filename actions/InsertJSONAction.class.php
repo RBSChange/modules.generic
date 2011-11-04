@@ -28,9 +28,26 @@ class generic_InsertJSONAction extends change_JSONAction
 		$parentNodeId = intval($request->getParameter('parentref'));
 		if ($parentNodeId <= 0) { $parentNodeId = null; }
 
-		$documentService->save($document, $parentNodeId);
+		try 
+		{
+			$documentService->save($document, $parentNodeId);
+		}
+		catch (ValidationException $e)
+		{
+			$ls = LocaleService::getInstance();
+			$k = 'm.' . $model->getModuleName() . '.document.' . $model->getDocumentName() . '.';
+			$messages = array();
+			foreach ($e->getErrors() as $name => $errors) 
+			{
+				$fieldLabel = $ls->trans($k . strtolower($name), array('ucf'));
+				foreach ($errors as $error) 
+				{
+					$messages[] = change_Constraints::addFieldLabel($fieldLabel, $error);
+				}
+			}
+			return $this->sendJSONError(implode(' ', $messages) , false);
+		}
 		$this->logAction($document);
-
 		return $this->sendJSON(array('id' => $document->getId(), 'lang' => $document->getLang(), 'label' => $document->getLabel()));
 	}
 	

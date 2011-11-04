@@ -8,31 +8,37 @@ class generic_ValidateConstraintsJSONAction extends change_JSONAction
 	public function _execute($context, $request)
 	{
 		$data = $request->getParameter('data', '');
-		$constraintArray = $request->getParameter('constraints', array());
+		$constraints = $request->getParameter('constraints');
+		if (is_string($constraints))
+		{
+			$constraintArray = JsonService::getInstance()->decode($constraints);
+		}
+		else
+		{
+			$constraintArray = array();
+		}
+		
 		RequestContext::getInstance()->setLang(RequestContext::getInstance()->getUILang());
 		if (f_util_ArrayUtils::isNotEmpty($constraintArray))
 		{
-			$constraints = implode(';', $constraintArray);
-			$name = $request->getParameter('name', '');
-			$property   = new validation_Property($name, $data);
-			$errors     = new validation_Errors();
-			$constraintsParser = new validation_ContraintsParser();
-			$validators = $constraintsParser->getValidatorsFromDefinition($constraints);
-	
-			foreach ($validators as $validator)
+			try 
 			{
-				try
+				foreach ($constraintArray as $name => $params) 
 				{
-					$validator->validate($property, $errors);
+					$c = change_Constraints::getByName($name, $params);
+					if (!$c->isValid($data))
+					{
+						$errors = change_Constraints::formatMessages($c, $request->getParameter('name'), $params);
+						if (count($errors))
+						{
+							return $this->sendJSONError($errors[0], false);
+						}
+					}
 				}
-				catch (IllegalArgumentException $e)
-				{
-					return $this->sendJSONException($e, false);
-				}
-				if ($errors->count() > 0)
-				{
-					return $this->sendJSONError($errors[0], false);
-				}
+			}
+			catch (Exception $e)
+			{
+				return $this->sendJSONException($e, false);
 			}
 		}
 		return $this->sendJSON(array());

@@ -30,7 +30,28 @@ class generic_UpdateJSONAction extends change_JSONAction
 		}
 		
 		uixul_DocumentEditorService::getInstance()->importFieldsData($document, $propertiesValue);	
-		$documentService->save($document);
+		
+		try 
+		{
+			$documentService->save($document);
+		}
+		catch (ValidationException $e)
+		{
+			$model = $document->getPersistentModel();
+			$ls = LocaleService::getInstance();
+			$k = 'm.' . $model->getModuleName() . '.document.' . $model->getDocumentName() . '.';
+			$messages = array();
+			foreach ($e->getErrors() as $name => $errors) 
+			{
+				$fieldLabel = $ls->trans($k . strtolower($name), array('ucf'));
+				foreach ($errors as $error) 
+				{
+					$messages[] = change_Constraints::addFieldLabel($fieldLabel, $error);
+				}
+			}
+			return $this->sendJSONError(implode(' ', $messages) , false);
+		}
+		
 		
 		$this->logAction($document);
 

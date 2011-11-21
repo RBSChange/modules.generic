@@ -5,4 +5,5 @@
   <key id="label-help">folder label</key>
   <key id="description">description</key>
   <key id="description-help">folder description</key>
+  <key id="document-name">folder</key>
 </i18n>

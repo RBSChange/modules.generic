@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.generic.bo.general" lcid="en_GB">
   <key id="module-name">core</key>
-  <key id="generalities">main data</key>
-  <key id="permissions-herited-rootfolder">displaying permissions herited from the root folder</key>
-  <key id="permissions-herited-from">displaying permissions herited from {label}</key>
+  <key id="generalities">main properties</key>
+  <key id="permissions-herited-rootfolder">displaying permissions inherited from the root folder</key>
+  <key id="permissions-herited-from">displaying permissions inherited from {label}</key>
+  <key id="system-folder-name">core</key>
 </i18n>

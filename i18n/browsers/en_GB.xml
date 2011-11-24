@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.browsers" lcid="en_GB">
+  <key id="all_all">unknown</key>
+  <key id="elektra_all">Opera 4 to 6</key>
+  <key id="gecko_2">Firefox 2</key>
+  <key id="gecko_3">Firefox 3 or 3.5</key>
+  <key id="gecko_all">Firefox</key>
+  <key id="iphone_all">iPhone or iPod</key>
+  <key id="khtml_all">Safari, Chrome or Konqueror (WebKit)</key>
+  <key id="mariner_all">Netscape</key>
+  <key id="presto_all">Opera 7 or higher</key>
+  <key id="tasman_all">Internet Explorer 5.5 Mac</key>
+  <key id="trident_3">Internet Explorer 5.5 Windows</key>
+  <key id="trident_4">Internet Explorer 6.0</key>
+  <key id="trident_5">Internet Explorer 7.0</key>
+  <key id="trident_6">Internet Explorer 8.0</key>
+  <key id="trident_all">Internet Explorer</key>
+  <key id="gecko_4"/>
+  <key id="trident_7"/>
+</i18n>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.bo.useractionlogger" lcid="en_GB">
+  <key id="addtag-menu">addtag.menu {tag} {documentlabel}</key>
+  <key id="addtag-page">addtag.page {tag} {lang} {documentlabel} {path}</key>
+  <key id="addtag-website">addtag.website {tag} {lang} {documentlabel}</key>
+  <key id="log-addtag-menu">log addtag menu</key>
+  <key id="log-addtag-page">log-addtag-page</key>
+  <key id="log-addtag-website">log addtag website</key>
+  <key id="log-removetag-page">log-removetag-page</key>
+  <key id="removetag-page">removetag.page {tag} {lang} {documentlabel} {path}</key>
+</i18n>

@@ -1,12 +1,14 @@
 <?php
 class generic_persistentdocument_rootfolder extends generic_persistentdocument_rootfolderbase
-{	
+{		
 	/**
-	 * Return the localized value for a rootfolder
-	 * @return string
+	 * Define the label of the tree node of the document.
+	 * By default, this method returns the label property value.
+	 * @return String
 	 */
-	public function getLabel()
+	public function getTreeNodeLabel()
 	{
-		return f_Locale::translateUI('&modules.generic.document.rootfolder.Document-name;');
+		return LocaleService::getInstance()->trans('m.generic.document.rootfolder.document-name', array('ucf'));
+		
 	}
 }

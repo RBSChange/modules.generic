@@ -193,9 +193,12 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 			$startIndex = $this->getStartIndex();
 			$locateDocumentId = $this->getLocateDocument();
 			$result = $document->getDocumentService()->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount);
-			$this->setStartIndex($startIndex);
-			$this->setTotal($totalCount);
-			return $result;
+			if (is_array($result))
+			{
+				$this->setStartIndex($startIndex);
+				$this->setTotal($totalCount);
+				return $result;
+			}
 		}
 		
 		$moduleService = ModuleBaseService::getInstanceByModuleName($this->getModuleName());
@@ -205,9 +208,12 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 			$startIndex = $this->getStartIndex();
 			$locateDocumentId = $this->getLocateDocument();
 			$result = $moduleService->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount);
-			$this->setStartIndex($startIndex);
-			$this->setTotal($totalCount);
-			return $result;
+			if (is_array($result))
+			{
+				$this->setStartIndex($startIndex);
+				$this->setTotal($totalCount);
+				return $result;
+			}
 		}
 		
 		$result = array();
@@ -256,7 +262,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 				}
 			}				
 		}
-				// Method on document.
+		// Method on document.
 		else if (f_util_ClassUtils::methodExists($document, $getterName = 'get'.ucfirst($propertyName)))
 		{
 			$result = $document->{$getterName}();
@@ -363,11 +369,6 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		$langs = $document->getI18nInfo()->getLangs();
 		
 		$isContextLangAvailable = $document->isContextLangAvailable();
-		$label = $document->getTreeNodeLabel();
-		if (!$isContextLangAvailable)
-		{
-			$label .= ' [' . f_Locale::translateUI('&modules.uixul.bo.languages.' . ucfirst($document->getLang()) . ';') . ']';
-		}
 		$modelName = $document->getDocumentModelName();
 		
 		$currentNode = array();
@@ -375,13 +376,19 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		$currentNode['v'] = $document->getDocumentversion();
 		$currentNode['mn'] = $modelName;
 		$currentNode['t'] = str_replace('/', '_', $modelName);
-		$currentNode['label'] = $label;
 		$currentNode['l'] = $lang;
 		$currentNode['dl'] = join(' ', $langs);
 		$currentNode['la'] = $isContextLangAvailable;
 		$currentNode['s'] = $document->getPublicationstatus();
 		
-		//$currentNode['c'] = $this->isContainer($modelName);
+		$this->addPermissionInfo($document, $currentNode);
+		$nodeAttributes = array();
+		DocumentHelper::completeBOAttributes($document, $nodeAttributes, $this->treeType, $this->getModuleName());
+		if (isset($nodeAttributes['s']))
+		{
+			$currentNode['s'] = $nodeAttributes['s'];
+		}		
+		$currentNode['label'] = $nodeAttributes['label'];
 		
 		$persistantModel = $document->getPersistentModel();
 		if ($isContextLangAvailable && $persistantModel->useCorrection())
@@ -394,32 +401,6 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 				$currentNode['crs'] = $correction->getPublicationstatus();
 				$currentNode['label'] = $correction->getLabel() . ' (' . $currentNode['label'] . ')';
 			}
-		}
-		
-		$this->addPermissionInfo($document, $currentNode);
-		$nodeAttributes = array();
-		$document->getDocumentService()->addTreeAttributes($document, $this->getModuleName(), $this->treeType, $nodeAttributes);
-		if (isset($nodeAttributes['s']))
-		{
-			$currentNode['s'] = $nodeAttributes['s'];
-		}
-		
-		if (isset($nodeAttributes['label']))
-		{
-			$currentNode['label'] = $nodeAttributes['label'];
-		}
-		
-		if (!isset($nodeAttributes['block']))
-		{
-			$models = block_BlockService::getInstance()->getBlocksDocumentModelToInsert();
-			if (isset($models[$modelName]))
-			{
-				$nodeAttributes['block'] = f_util_ArrayUtils::firstElement($models[$modelName]);
-			}
-		}
-		if (!isset($nodeAttributes['htmllink']) && $isContextLangAvailable && $persistantModel->hasURL())
-		{
-			$nodeAttributes['htmllink'] = '<a class="link" href="#" rel="cmpref:' . $currentNode['i'] . '" lang="' . $lang . '">' . htmlspecialchars($label, ENT_NOQUOTES, 'UTF-8') . '</a>';
 		}
 		
 		if (!isset($nodeAttributes['hasWorkflow']) && $persistantModel->getWorkflowStartTask() !== null)

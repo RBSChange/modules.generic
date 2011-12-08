@@ -9,35 +9,40 @@ class generic_InfoAction extends change_JSONAction
 	protected function _execute($context, $request)
 	{
 		$result = array();
+		$rc = RequestContext::getInstance();
 		foreach ($this->getDocumentIdArrayFromRequest($request) as $documentId)
 		{
 			try
 			{
-				$rc = RequestContext::getInstance();
-				$document = DocumentHelper::getDocumentInstance($documentId);	
+				$document = DocumentHelper::getDocumentInstance($documentId);
+				$vo = $document->getLang();
+				$rc->setLang($vo);
 				$resultInfo = array(
 					'id' => $document->getId(),
 					'model' => $document->getDocumentModelName(), 
-					'lang' => $document->getLang(), 
-					'icon' => $document->getPersistentModel()->getIcon()
+					'lang' => $vo
 				);
 				
+				DocumentHelper::completeBOAttributes($document, $resultInfo, DocumentHelper::MODE_ITEM);
+				if (!isset($resultInfo['icon']))
+				{
+					$resultInfo['icon'] = $document->getPersistentModel()->getIcon();
+				}
+				
+				$resultInfo['labels'] = array();
+				$resultInfo['labels'][$vo] = $resultInfo['label'];
+				unset($resultInfo['label']);				
 				if ($document->isLocalized())
 				{
-					$resultInfo['labels'] = array();
-					foreach ($rc->getSupportedLanguages() as $lang)
+					foreach ($document->getI18nInfo()->getLangs() as $lang)
 					{
-						if ($document->isLangAvailable($lang))
+						if (!isset($resultInfo['labels'][$lang]))
 						{
 							$rc->beginI18nWork($lang);
 							$resultInfo['labels'][$lang] = $document->getTreeNodeLabel();
 							$rc->endI18nWork();
 						}
 					}
-				}
-				else
-				{
-					$resultInfo['labels'] = array($document->getLang() => $document->getTreeNodeLabel());
 				}
 				$result[] = $resultInfo;
 			}

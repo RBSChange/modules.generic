@@ -74,7 +74,6 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	
 	/**
 	 * @return String
-	 * @example modules_generic/Document
 	 */
 	public final function getName()
 	{
@@ -82,8 +81,7 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	}
 
 	/**
-	 * @return String
-	 * @example modules_generic/reference or null
+	 * @return String or null
 	 */
 	public final function getBaseName()
 	{
@@ -108,7 +106,6 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 	
 	/**
 	 * @return String
-	 * @example generic
 	 */
 	public final function getModuleName()
 	{
@@ -117,7 +114,6 @@ class generic_persistentdocument_Documentmodel extends f_persistentdocument_Pers
 
 	/**
 	 * @return String
-	 * @example folder
 	 */
 	public final function getDocumentName()
 	{

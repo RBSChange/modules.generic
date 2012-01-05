@@ -91,15 +91,15 @@ a.link:active{
 	outline: none;
 }
 
-h1.title, .heading-one,
-h2.title, .heading-two,
-h3.title, .heading-three,
-h4.title, .heading-four{
+.heading-one,
+.heading-two,
+.heading-three,
+.heading-four{
 	line-height: 1;
 }
 
-h5 { font-size: 116.67%; }		/* 14px */
-h6 { font-size: 116.67%; font-style:italic; }	/* 14px */
+.heading-five{ font-size: 116.67%; }		/* 14px */
+.heading-six{ font-size: 116.67%; font-style:italic; }	/* 14px */
 
 table.normal{
 	empty-cells:show;

@@ -8,29 +8,34 @@
 	width: 100%;
 }
 
-.cblock .columns {
+.cblock .columns{
 	display: table;
+	table-layout: fixed;
 	width: 100%;
 }
-.cblock .columns > div {
+.cblock .columns > div{
 	display: table-cell;
+	vertical-align: top;
 }
-.cblock .columns > :not(:first-child) {
-	margin-left: 1%;
+.cblock .columns > :not(:first-child){
+	padding-left: 10px;
 }
-.cblock .columns .column-50 {
-	width: 49%;
+.cblock .columns > :not(:last-child){
+	padding-right: 10px;
 }
-.cblock .columns .column-25 {
-	width: 24%;
+.cblock .columns .column-50{
+	width: 50%;
 }
-.cblock .columns .column-75 {
-	width: 74%;
+.cblock .columns .column-25{
+	width: 25%;
 }
-.cblock .columns .column-33 {
-	width: 32%;
+.cblock .columns .column-75{
+	width: 75%;
 }
-.cblock .columns .column-66 {
+.cblock .columns .column-33{
+	width: 33%;
+}
+.cblock .columns .column-66{
 	width: 66%;
 }
 

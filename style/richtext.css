@@ -3,48 +3,42 @@
 /*---------------*/
 .cleaner,
 .clear-both,
-.valign-buttons{
+.valign-buttons {
 	clear:both;
 	width:100%;
 }
 
 .float-left,
-.floatLeft{
+.floatLeft {
 	float: left;
 }
-
 .float-right,
-.floatRight{
+.floatRight {
 	float: right;
 }
-
-img.float-left{
+img.float-left {
 	float: left;
 	margin-right: 10px;
 }
-
-img.float-right{
+img.float-right {
 	float: right;
 	margin-left: 10px;
 }
 
 .text-align-left,
-.tal{
+.tal {
 	text-align:left;
 }
-
 .text-align-right,
-.tar{
+.tar {
 	text-align:right;
 }
-
 .text-align-center,
-.tac{
+.tac {
 	text-align:center;
 }
-
 .text-align-justify,
-.taj{
+.taj {
 	text-align: justify;
 }
 
@@ -52,7 +46,7 @@ img.float-right{
 /* Hide only visually, but have it available for screenreaders: by Jon Neal.
   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
 .hidden,
-.invisible{
+.invisible {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;
@@ -63,20 +57,13 @@ img.float-right{
 	width: 1px;
 }
 
-.strong{
+.strong {
 	font-weight: bold;
 }
 
-.small{
+.small {
 	font-size: 90%;
 }
-
-/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.
-   j.mp/bestclearfix */
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
-.clearfix:after { clear: both; }
-/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
-.clearfix { zoom: 1; }
 
 /*
 	RICHTEXT
@@ -84,57 +71,62 @@ img.float-right{
 	Fonds de couleur : #f9f9f9;
 	Bordures : #cccccc;
 */
-
 a.link:hover,
 a.anchor:hover,
-a.link:active{
+a.link:active {
 	outline: none;
 }
 
 .heading-one,
+.h-1,
 .heading-two,
+.h-2,
 .heading-three,
-.heading-four{
+.h-3,
+.heading-four,
+.h-4 {
 	line-height: 1;
 }
-
-.heading-five{ font-size: 116.67%; }		/* 14px */
-.heading-six{ font-size: 116.67%; font-style:italic; }	/* 14px */
-
-table.normal{
-	empty-cells:show;
-	border-collapse:collapse;
-	width:100%;
-	font-size:1em;
+.heading-five,
+.h-5 {
+	font-size: 116.67%; /* 14px */
+}
+.heading-six,
+.h-6 {
+	font-size: 116.67%; /* 14px */
+	font-style: italic;
 }
 
-table.normal caption{
-	text-align:left;
-	font-weight:normal;
+table.normal {
+	empty-cells: show;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 1em;
 }
-
+table.normal caption {
+	text-align: left;
+	font-weight: normal;
+}
 table.normal tr td,
-table.normal tr th{
+table.normal tr th {
 	border-width: 1px;
 	border-style: solid;
 }
 
-table.normal tr th{
+table.normal tr th {
 	font-weight: bold;
 }
 
 ul.normal li,
-ol.normal li{
-	list-style-position:inside;
-	margin-left:40px;
+ol.normal li {
+	list-style-position: inside;
+	margin-left: 40px;
 }
-
-ul.normal li{
-	list-style-type:disc;
+ul.normal li {
+	list-style-type: disc;
 }
-
-ol.normal li{
-	list-style-type:decimal;
+ol.normal li {
+	list-style-type: decimal;
 }
 
 blockquote {
@@ -142,9 +134,8 @@ blockquote {
 	border-left-style: solid;
 	margin-right: 10px;
 	padding: 10px 10px 20px 10px;
-	quotes:"\201C""\201D""\2018""\2019";
+	quotes: "\201C""\201D""\2018""\2019";
 }
-
 blockquote:before {
 	content: open-quote;
 	font-size: 4em;
@@ -153,12 +144,13 @@ blockquote:before {
 	vertical-align: -.4em;
 }
 
-hr{
+hr {
 	height: 1px;
 	border: 0;	
 }
 
-abbr, acronym{
+abbr, 
+acronym {
 	border-bottom-style: dotted;
 	border-bottom-width: 1px;
 }
@@ -171,6 +163,6 @@ pre {
 	word-wrap: break-word; /* IE */
 }
 
-span.underline{
+span.underline {
 	text-decoration: underline;
 }

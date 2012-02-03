@@ -105,7 +105,6 @@ table.normal {
 }
 table.normal caption {
 	text-align: left;
-	font-weight: normal;
 }
 table.normal tr td,
 table.normal tr th {

@@ -8,6 +8,21 @@
 	width: 100%;
 }
 
+.cLayout,
+.cRow {
+	display: table;
+	width: 100%;
+}
+.cColumn,
+.cCell {
+	display: table-cell;	
+}
+.cColumn {
+	-webkit-box-sizing: padding-box;
+	-moz-box-sizing: padding-box;
+	box-sizing: padding-box;
+}
+
 .cblock .columns{
 	display: table;
 	table-layout: fixed;

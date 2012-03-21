@@ -200,4 +200,13 @@ class generic_RootfolderService extends f_persistentdocument_DocumentService
 			}
 		}
 	}
+	
+	/**
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @return string|null
+	 */
+	public function getTreeNodeLabel($document)
+	{
+		return LocaleService::getInstance()->transBO('m.generic.document.rootfolder.document-name', array('ucf'));
+	}
 }

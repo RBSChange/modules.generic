@@ -7,12 +7,7 @@ class generic_GetPublicationInfosAction extends f_action_BaseJSONAction
 	 */
 	public function _execute($context, $request)
 	{
-
 		$document = $this->getDocumentInstanceFromRequest($request);
-		
-		//Retrouve le document original	
-		$document = DocumentHelper::getByCorrection($document);
-				
 		$data = uixul_DocumentEditorService::getInstance()->getPublicationInfos($document);
 		return $this->sendJSON($data);
 	}

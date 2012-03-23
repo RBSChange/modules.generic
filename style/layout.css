@@ -11,6 +11,7 @@
 .cLayout,
 .cRow {
 	display: table;
+	table-layout: fixed;
 	width: 100%;
 }
 .cColumn,

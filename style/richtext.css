@@ -114,6 +114,7 @@ table.normal tr th {
 
 table.normal tr th {
 	font-weight: bold;
+	white-space: nowrap;
 }
 
 ul.normal li,

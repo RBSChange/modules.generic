@@ -125,15 +125,4 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 	    	$nodeAttributes['thumbnailsrc'] = MediaHelper::getIcon('folder');
 		}	    
 	}
-	
-	
-	/**
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @return string|null
-	 */
-	public function getTreeNodeLabel($document)
-	{
-		return LocaleService::getInstance()->transBO($document->getLabel(), array('ucf'));
-	}	
-	
 }

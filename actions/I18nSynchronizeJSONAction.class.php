@@ -14,7 +14,7 @@ class generic_I18nSynchronizeJSONAction extends f_action_BaseJSONAction
 		$documentId = intval($this->getDocumentIdFromRequest($request));
 		LocaleService::getInstance()->synchronizeDocumentId($documentId);
 		$d = DocumentHelper::getDocumentInstance($documentId);
-		$result = LocaleService::getInstance()->getI18nSynchoForDocument($d);
+		$result = LocaleService::getInstance()->getI18nSynchroForDocument($d);
 		return $this->sendJSON($result);
 	}
 }

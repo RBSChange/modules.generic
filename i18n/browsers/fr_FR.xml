@@ -6,6 +6,7 @@
   <key id="gecko_all">Firefox</key>
   <key id="gecko_2">Firefox 2</key>
   <key id="gecko_3">Firefox 3 ou 3.5</key>
+  <key id="gecko_4">Firefox 4 ou plus</key>
   <key id="khtml_all">Safari, chrome ou konqueror (WebKit)</key>
   <key id="mariner_all">Netscape</key>
   <key id="tasman_all">Internet Explorer 5.5 Mac</key>

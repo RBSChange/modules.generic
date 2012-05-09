@@ -103,15 +103,6 @@ dl.normal dd {
 	margin-left: 20px;
 	margin-bottom: 5px;
 }
-table.normal caption {
-	caption-side: bottom;
-	font-style: italic;
-	text-align: center;
-	margin-bottom: 15px;
-}
-table.normal caption {
-	min-width: 32px;
-}
 table.normal tr td,
 table.normal tr th {
 	padding: 6px 3px;

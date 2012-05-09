@@ -104,6 +104,7 @@ table.normal {
 	font-size: 1em;
 }
 table.normal caption {
+	font-size: 150%;
 	text-align: left;
 }
 table.normal tr td,

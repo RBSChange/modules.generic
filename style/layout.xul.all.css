@@ -1,3 +1,17 @@
 .hidden{
 	display: none;
 }
+
+.editable-block, .static-block {
+	border: 1px dotted #cccccc;
+	padding: 10px;
+	text-align: center;
+}
+
+.editable-block {
+	background-color: #f5f5ff;
+}
+
+.static-block {
+	background-image: url(/media/backoffice/stage-bg.png);
+}

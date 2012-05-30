@@ -1,7 +1,6 @@
 <?php
 class generic_RootfolderService extends f_persistentdocument_DocumentService
 {
-	
 	/**
 	 * @var generic_RootfolderService
 	 */
@@ -199,5 +198,14 @@ class generic_RootfolderService extends f_persistentdocument_DocumentService
 				Framework::debug(__METHOD__ . ' cant remove child ' . $childDocmunentId);
 			}
 		}
+	}
+	
+	/**
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @return string|null
+	 */
+	public function getTreeNodeLabel($document)
+	{
+		return LocaleService::getInstance()->trans('m.generic.document.rootfolder.document-name', array('ucf'));
 	}
 }

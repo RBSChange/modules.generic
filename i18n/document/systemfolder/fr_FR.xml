@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.generic.document.systemfolder" lcid="fr_FR">
+  <key id="document-name">dossier système</key>
+  <key id="edition-form-title">propriétés du dossir système</key>
+  <key id="label">libellé</key>
+</i18n>

@@ -39,8 +39,8 @@ class generic_GetDocumentHistoryAction extends change_JSONAction
 	}
 	
 	/**
-	 * @param f_persistentdocument_PersistentDocument $documentId
-	 * @param users_persistentdocument_user $user
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @return array
 	 */
 	protected function getDatas($document)
 	{
@@ -52,7 +52,8 @@ class generic_GetDocumentHistoryAction extends change_JSONAction
 		$datas['creationdate'] = date_Formatter::toDefaultDateTimeBO($document->getUICreationdate());
 		$datas['modificationdate'] = date_Formatter::toDefaultDateTimeBO($document->getUIModificationdate());
 		$datas['author'] = $document->getAuthor();
-		
+		$datas['type'] =  LocaleService::getInstance()->trans($document->getPersistentModel()->getLabelKey(), array('ucf'))
+			. ' (' .$document->getDocumentModelName() . ')';
 		return $datas;
 	}
 

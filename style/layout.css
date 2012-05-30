@@ -1,81 +1,66 @@
-/* CHANGE4 FREEBLOCKS */
-.freeLocation{
-	clear:left;
-	width:100%;
-}
-
-.freeBlock{
-	float:left;
-	width:100%;
-}
-/* END : CHANGE4 FREEBLOCKS */
-
-
-
-/*------------------*/
-/* BLOCKS STRUCTURE */
-/*------------------*/
-.website-block{
-	width: 100%;
+.freeLocation {
+	clear: left;
 	float: left;
+	width: 100%;
 }
-
-.row-100{
+.freeBlock {
+	float: left;
 	width: 100%;
 }
 
-.column-50{
-	width: 49%;
-	float: left;
+.cLayout,
+.cRow {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+.cColumn,
+.cCell {
+	display: table-cell;	
+}
+.cColumn {
+	-webkit-box-sizing: padding-box;
+	-moz-box-sizing: padding-box;
+	box-sizing: padding-box;
 }
 
-.column-25{
-	width: 24%;
-	float: left;
+.cblock .columns{
+	display: table;
+	table-layout: fixed;
+	width: 100%;
 }
-
-.column-75{
-	width: 74%;
-	float: left;
+.cblock .columns > div{
+	display: table-cell;
+	vertical-align: top;
 }
-
-.column-33{
-	width: 32%;
-	float: left;
+.cblock .columns > :not(:first-child){
+	padding-left: 10px;
 }
-
-.column-66{
+.cblock .columns > :not(:last-child){
+	padding-right: 10px;
+}
+.cblock .columns .column-50{
+	width: 50%;
+}
+.cblock .columns .column-25{
+	width: 25%;
+}
+.cblock .columns .column-75{
+	width: 75%;
+}
+.cblock .columns .column-33{
+	width: 33%;
+}
+.cblock .columns .column-66{
 	width: 66%;
-	float: left;
 }
 
-.margin-left{
-	margin-left: 1%;
-}
-
-.margin-right{
-	margin-right: 1%;
-}
-
-/* SPECIAL CLASS FOR 2 COLUMNS TEMPLATES MODULES */
-.removable{
-	display: table-cell;
-	height: 100%;
-}
-
-
-.removable{
-	display: table-cell;
-	height: 100%;
-}
-.display-none{
+.display-none {
 	display: none;
 }
-.display-inline{
+.display-inline {
 	display: inline;
 }
+
 @import url(/modules/generic/style/layout.!xul.all.css);
 @import url(/modules/generic/style/layout.xul.all.css);
-@import url(/modules/generic/style/layout.khtml.all.css);
-@import url(/modules/generic/style/layout.trident.4.css);
-@import url(/modules/generic/style/layout.trident.5.css);

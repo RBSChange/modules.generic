@@ -1,23 +1,10 @@
 <?php
+/**
+ * @package modules.generic
+ * @method generic_DocumentlogentryService getInstance()
+ */
 class generic_DocumentlogentryService extends f_persistentdocument_DocumentService
 {
-	/**
-	 * @var generic_DocumentlogentryService
-	 */
-	private static $instance;
-
-	/**
-	 * @return generic_DocumentlogentryService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return generic_persistentdocument_documentlogentry
 	 */
@@ -32,7 +19,7 @@ class generic_DocumentlogentryService extends f_persistentdocument_DocumentServi
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_generic/documentlogentry');
+		return $this->getPersistentProvider()->createQuery('modules_generic/documentlogentry');
 	}
 
 	/**

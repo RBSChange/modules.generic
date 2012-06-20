@@ -21,7 +21,7 @@ class generic_AddTagJSONAction extends change_JSONAction
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{
@@ -41,7 +41,6 @@ class generic_AddTagJSONAction extends change_JSONAction
 		if (f_util_ArrayUtils::isNotEmpty($docIds) && f_util_StringUtils::isNotEmpty($tag))
 		{
 			$ts = TagService::getInstance();
-
 			if ($ts->isExclusiveTag($tag))
 			{
 				$oldDocument = $ts->getDocumentByExclusiveTag($tag, false);
@@ -54,15 +53,15 @@ class generic_AddTagJSONAction extends change_JSONAction
 			{
 				foreach ($docIds as $docId)
 				{
-							$contextualDocument = DocumentHelper::getDocumentInstance($ts->getContextualDocumentIdByTag($docId, $tag));
+					$contextualDocument = DocumentHelper::getDocumentInstance($ts->getContextualDocumentIdByTag($docId, $tag));
 					$oldDocument = $ts->getDocumentByContextualTag($tag, $contextualDocument, false);
 					if ($oldDocument !== null && !in_array($oldDocument->getId(), $docIds))
-							{
-								$docIds[] = $oldDocument->getId();
-							}
-						}
+					{
+						$docIds[] = $oldDocument->getId();
 					}
 				}
+			}
+		}
 		return $docIds;
 	}
 }

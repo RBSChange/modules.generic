@@ -5,11 +5,11 @@
  */
 class generic_GroupAclScriptDocumentElement extends import_ScriptDocumentElement
 {
-    /**
-     * @return generic_persistentdocument_groupAcl
-     */
-    protected function initPersistentDocument()
-    {
-    	return generic_GroupAclService::getInstance()->getNewDocumentInstance();
-    }
+	/**
+	 * @return generic_persistentdocument_groupAcl
+	 */
+	protected function initPersistentDocument()
+	{
+		return generic_GroupAclService::getInstance()->getNewDocumentInstance();
+	}
 }

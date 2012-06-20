@@ -1,24 +1,10 @@
 <?php
+/**
+ * @package modules.generic
+ * @method generic_UserAclService getInstance()
+ */
 class generic_UserAclService extends f_persistentdocument_DocumentService
 {
-
-	/**
-	 * @var generic_UserAclService
-	 */
-	private static $instance;
-
-	/**
-	 * @return generic_UserAclService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return generic_persistentdocument_userAcl
 	 */
@@ -33,12 +19,12 @@ class generic_UserAclService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_generic/userAcl');
+		return $this->getPersistentProvider()->createQuery('modules_generic/userAcl');
 	}
 
 	/**
 	 * @param generic_persistentdocument_userAcl $document
-	 * @param Integer $parentNodeId
+	 * @param integer $parentNodeId
 	 */
 	protected function preSave($document, $parentNodeId)
 	{
@@ -47,10 +33,10 @@ class generic_UserAclService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param generic_persistentdocument_userAcl $document
-	 * @param Integer $parentNodeId
+	 * @param integer $parentNodeId
 	 */
 	protected function postSave($document, $parentNodeId)
 	{
-		$this->pp->compileACL($document);
+		$this->getPersistentProvider()->compileACL($document);
 	}
 }

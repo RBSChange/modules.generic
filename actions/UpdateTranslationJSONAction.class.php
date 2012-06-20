@@ -17,8 +17,8 @@ class generic_UpdateTranslationJSONAction extends change_JSONAction
 			if ($request->hasParameter($propertyName))
 			{
 				$propertiesValue[$propertyName] = $request->getParameter($propertyName);
-			}			
-		}		
+			}
+		}
 		
 		$document = $this->getDocumentInstanceFromRequest($request);
 		//recupere la correction en cours
@@ -44,7 +44,7 @@ class generic_UpdateTranslationJSONAction extends change_JSONAction
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

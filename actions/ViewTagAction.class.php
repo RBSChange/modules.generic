@@ -30,7 +30,7 @@ class generic_ViewTagAction extends change_Action
 					$request->setModuleParameter($moduleName, 'cmpref', $document->getId());
 					$context->getController()->forward($moduleName, 'ViewDetail');
 					return change_View::NONE;
-				}		
+				}
 			} 
 			catch (Exception $e) 
 			{
@@ -47,7 +47,7 @@ class generic_ViewTagAction extends change_Action
 	}
 	
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function isSecure()
 	{

@@ -58,7 +58,7 @@ class generic_SavePermissionsJSONAction extends change_JSONAction
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

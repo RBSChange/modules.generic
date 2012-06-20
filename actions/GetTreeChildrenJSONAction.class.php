@@ -311,7 +311,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	
 	/**
 	 * @param f_persistentdocument_PersistentDocument $document
-	 * @return Boolean
+	 * @return boolean
 	 */
 	private function checkDocumentVisibility($document)
 	{
@@ -360,7 +360,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	
 	/**
 	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Integer $parentId
+	 * @param integer $parentId
 	 * @return array
 	 */
 	private function buildJSNode($document)
@@ -477,7 +477,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		}
 	}
 	/**
-	 * @return String wtree, wlist
+	 * @return string wtree, wlist
 	 */
 	protected function getTreeType()
 	{
@@ -486,7 +486,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	
 	
 	/**
-	 * @return Integer
+	 * @return integer
 	 */
 	protected function getPageSize()
 	{
@@ -494,7 +494,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	}
 	
 	/**
-	 * @return Integer
+	 * @return integer
 	 */
 	protected function getStartIndex()
 	{
@@ -503,7 +503,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	
 	
 	/**
-	 * @param Integer $index
+	 * @param integer $index
 	 */
 	protected function setStartIndex($index)
 	{
@@ -511,7 +511,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	}
 	
 	/**
-	 * @return Integer
+	 * @return integer
 	 */
 	protected function getTotal()
 	{
@@ -519,14 +519,14 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	}
 	
 	/**
-	 * @param Integer $total
+	 * @param integer $total
 	 */
 	protected function setTotal($total)
 	{
 		$this->total = $total;
 	}
 	/**
-	 * @return Integer
+	 * @return integer
 	 */
 	protected function getLocateDocument()
 	{

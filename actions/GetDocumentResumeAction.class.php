@@ -13,6 +13,5 @@ class generic_GetDocumentResumeAction extends change_JSONAction
 		$document = DocumentHelper::getByCorrection($document);
 		$data = $document->getDocumentService()->getResume($document, $this->getModuleName($request));
 		return $this->sendJSON($data);
-
 	}
 }

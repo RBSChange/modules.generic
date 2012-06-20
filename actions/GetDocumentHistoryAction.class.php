@@ -70,7 +70,7 @@ class generic_GetDocumentHistoryAction extends change_JSONAction
 			{
 				$mergedLogs[$log['entry_id']] = $log;
 			}
-		}	
+		}
 		return $this->sortLogs(array_values($mergedLogs));
 	}
 

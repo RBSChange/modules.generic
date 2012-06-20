@@ -30,7 +30,7 @@ class generic_DefaultValuesJSONAction extends change_JSONAction
 	
 	/**
 	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param String[] $allowedProperties
+	 * @param string[] $allowedProperties
 	 * @param integer $parentId
 	 * @return Array
 	 */

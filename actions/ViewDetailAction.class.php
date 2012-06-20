@@ -42,7 +42,7 @@ class generic_ViewDetailAction extends change_Action
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function isSecure()
 	{
@@ -50,7 +50,7 @@ class generic_ViewDetailAction extends change_Action
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

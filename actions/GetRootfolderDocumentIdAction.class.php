@@ -8,12 +8,11 @@ class generic_GetRootfolderDocumentIdAction extends change_Action
 	public function _execute($context, $request)
 	{
 		$result = array();
-		
 		try
 		{
 			$moduleName = $this->getModuleName($request);
-		    $rootFolderId = ModuleService::getInstance()->getRootFolderId($moduleName);
-		    		 
+			$rootFolderId = ModuleService::getInstance()->getRootFolderId($moduleName);
+					 
 			$resultInfo = array('id' => $rootFolderId);
 			$result[] = $resultInfo;
 		}

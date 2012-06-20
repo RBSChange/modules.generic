@@ -16,7 +16,7 @@ class generic_UpdateJSONAction extends change_JSONAction
 			if ($request->hasParameter($propertyName))
 			{
 				$propertiesValue[$propertyName] = $request->getParameter($propertyName);
-			}			
+			}
 		}
 
 		$document = $this->getDocumentInstanceFromRequest($request);
@@ -63,7 +63,7 @@ class generic_UpdateJSONAction extends change_JSONAction
 
 	/**
 	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param String[]
+	 * @param string[]
 	 * @return Array
 	 */
 	protected function exportFieldsData($document, $allowedProperties)
@@ -72,7 +72,7 @@ class generic_UpdateJSONAction extends change_JSONAction
 	}
 	
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

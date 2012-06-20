@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
-<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" model-version="1.0" icon="systemfolder" extend="modules_generic/folder"
-	backoffice-indexable="false" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" model-version="1.0" icon="systemfolder" extend="modules_generic/folder" backoffice-indexable="false" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd">
 </document>

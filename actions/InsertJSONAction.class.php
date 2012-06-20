@@ -15,8 +15,8 @@ class generic_InsertJSONAction extends change_JSONAction
 			if ($request->hasParameter($propertyName))
 			{
 				$propertiesValue[$propertyName] = $request->getParameter($propertyName);
-			}			
-		}		
+			}
+		}
 		
 		$modelName = $request->getParameter('modelname');
 		$model = f_persistentdocument_PersistentDocumentModel::getInstanceFromDocumentModelName($modelName);

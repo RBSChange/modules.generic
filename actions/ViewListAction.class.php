@@ -56,7 +56,7 @@ class generic_ViewListAction extends change_Action
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

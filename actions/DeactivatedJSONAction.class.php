@@ -16,11 +16,10 @@ class generic_DeactivatedJSONAction extends change_JSONAction
 	/**
 	 * Tell the permission system this action is a document action ie. the permission
 	 * depends on the document the action acts on.
-	 * @return Boolean by default false
+	 * @return boolean by default false
 	 */
 	protected function isDocumentAction()
 	{
 		return true;
 	}
-	
 }

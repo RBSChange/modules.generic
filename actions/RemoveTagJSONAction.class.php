@@ -21,7 +21,7 @@ class generic_RemoveTagJSONAction extends change_JSONAction
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

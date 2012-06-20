@@ -1,23 +1,10 @@
 <?php
+/**
+ * @package modules.generic
+ * @method generic_FolderService getInstance()
+ */
 class generic_FolderService extends f_persistentdocument_DocumentService
 {
-	/**
-	 * @var generic_FolderService
-	 */
-	private static $instance;
-
-	/**
-	 * @return generic_FolderService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return generic_persistentdocument_folder
 	 */
@@ -32,12 +19,12 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_generic/folder');
+		return $this->getPersistentProvider()->createQuery('modules_generic/folder');
 	}
 
 	/**
 	 * @param generic_persistentdocument_folder $fromFolder
-	 * @param String $relativePath
+	 * @param string $relativePath
 	 * @return generic_persistentdocument_folder|null
 	 */
 	public function getByPathFrom($fromFolder, $relativePath)
@@ -61,7 +48,7 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param generic_persistentdocument_folder $fromFolder
-	 * @param String $relativePath
+	 * @param string $relativePath
 	 * @return generic_persistentdocument_folder the freshfly created folder (or the existant folder if relevant)
 	 */
 	public function mkdir($fromFolder, $relativePath)
@@ -112,8 +99,8 @@ class generic_FolderService extends f_persistentdocument_DocumentService
 	{
 		if ($mode & DocumentHelper::MODE_CUSTOM)
 		{
-	    	$attributes['thumbnailsrc'] = MediaHelper::getIcon('folder');
-		}	    
+			$attributes['thumbnailsrc'] = MediaHelper::getIcon('folder');
+		}
 	}
 	
 	/**

@@ -20,7 +20,7 @@ class generic_MoveAction extends change_JSONAction
 	}
 	
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

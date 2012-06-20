@@ -22,7 +22,7 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 			{
 				$data[$role] = implode(',', $comps[$role]);
 			}
-		}		
+		}
 		return $this->sendJSON($data);
 	}
 
@@ -68,7 +68,7 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 	}
 	
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{

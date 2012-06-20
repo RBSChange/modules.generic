@@ -6,7 +6,7 @@ class generic_CheckUniqueRedirectUrlAction extends change_JSONAction
 	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
-    {
+	{
 		$website = $this->getDocumentInstanceFromRequest($request);
 		$websiteId = $website->getId();
 		$checkUrl = $request->getParameter('from_url');
@@ -19,5 +19,5 @@ class generic_CheckUniqueRedirectUrlAction extends change_JSONAction
 			return $this->sendJSON($urlInfo);
 		}
 		return $this->sendJSON(array('website_id' => $websiteId, 'checkUrl' => $checkUrl));
-    }
+	}
 }

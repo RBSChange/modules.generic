@@ -1,16 +1,30 @@
 <?php
+/**
+ * @package modules.generic
+ * @method generic_RootfolderService getInstance()
+ */
 class generic_RootfolderService extends f_persistentdocument_DocumentService
 {
 	/**
-	 * @var generic_RootfolderService
+	 * @return generic_persistentdocument_rootfolder
 	 */
-	private static $instance;
+	public function getNewDocumentInstance()
+	{
+		return $this->getNewDocumentInstanceByModelName('modules_generic/rootfolder');
+	}
 	
 	/**
-	 * @see f_persistentdocument_DocumentService::preUpdate()
-	 *
+	 * Create a query based on 'modules_generic/rootfolder' model
+	 * @return f_persistentdocument_criteria_Query
+	 */
+	public function createQuery()
+	{
+		return $this->getPersistentProvider()->createQuery('modules_generic/rootfolder');
+	}
+	
+	/**
 	 * @param generic_persistentdocument_rootfolder $document
-	 * @param Integer $parentNodeId
+	 * @param integer $parentNodeId
 	 */
 	protected function preUpdate($document, $parentNodeId)
 	{
@@ -39,7 +53,6 @@ class generic_RootfolderService extends f_persistentdocument_DocumentService
 						->add(Restrictions::childOf($document->getId()))
 						->find();
 		
-
 		$topics = $document->getTopicsArray();
 		if (count($topics))
 		{
@@ -124,52 +137,23 @@ class generic_RootfolderService extends f_persistentdocument_DocumentService
 	 */
 	private function getPackageName($document)
 	{
-		return $this->pp->getSettingPackage($document->getId(), ModuleService::SETTING_ROOT_FOLDER_ID);
+		return $this->getPersistentProvider()->getSettingPackage($document->getId(), ModuleService::SETTING_ROOT_FOLDER_ID);
 	}
 	
 	/**
-	 * @param Integer $documentId
-	 * @return String 
+	 * @param integer $documentId
+	 * @return string 
 	 */
 	public function getModuleNameById($documentId)
 	{
-		$package = $this->pp->getSettingPackage($documentId, ModuleService::SETTING_ROOT_FOLDER_ID);
+		$package = $this->getPersistentProvider()->getSettingPackage($documentId, ModuleService::SETTING_ROOT_FOLDER_ID);
 		// "modules_..."
 		return substr($package, 8);
 	}
 	
 	/**
-	 * @return generic_RootfolderService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-	
-	/**
-	 * @return generic_persistentdocument_rootfolder
-	 */
-	public function getNewDocumentInstance()
-	{
-		return $this->getNewDocumentInstanceByModelName('modules_generic/rootfolder');
-	}
-	
-	/**
-	 * Create a query based on 'modules_generic/rootfolder' model
-	 * @return f_persistentdocument_criteria_Query
-	 */
-	public function createQuery()
-	{
-		return $this->pp->createQuery('modules_generic/rootfolder');
-	}
-	
-	/**
 	 * @param generic_persistentdocument_rootfolder $parentDocument
-	 * @param Integer $childDocmunentId
+	 * @param integer $childDocmunentId
 	 */
 	public function removeDocumentId($parentDocument, $childDocmunentId)
 	{

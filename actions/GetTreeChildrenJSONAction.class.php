@@ -409,7 +409,7 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			$nodeAttributes['htmllink'] = '<a class="link" href="#" rel="cmpref:' . $currentNode['i'] . '" lang="' . $lang . '">' . htmlspecialchars($label, ENT_NOQUOTES, 'UTF-8') . '</a>';
 		}
 		
-		if (!isset($nodeAttributes['hasWorkflow']) && $persistantModel->getWorkflowStartTask() !== null)
+		if (!isset($nodeAttributes['hasWorkflow']) && workflow_ModuleService::getInstance()->hasPublishedWorkflowByModel($persistantModel))
 		{
 			$nodeAttributes['hasWorkflow'] = true;
 		}

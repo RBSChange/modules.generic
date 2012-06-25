@@ -403,7 +403,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 			}
 		}
 		
-		if (!isset($nodeAttributes['hasWorkflow']) && $persistantModel->getWorkflowStartTask() !== null)
+		if (!isset($nodeAttributes['hasWorkflow']) && workflow_ModuleService::getInstance()->hasPublishedWorkflowByModel($persistantModel))
 		{
 			$nodeAttributes['hasWorkflow'] = true;
 		}

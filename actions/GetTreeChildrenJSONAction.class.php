@@ -13,7 +13,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	private $total;
 	private $locateDocument;
 	
-	private $treeType = 'wtree'; //wlist, wmultitree, wmultilist
+	private $treeType = 0; //DocumentHelper::MODE_*
 
 	/**
 	 * @param change_Context $context
@@ -28,7 +28,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		$this->pageSize = $request->getParameter('pageSize', -1);
 		$this->startIndex = $request->getParameter('startIndex', 0);
 		$this->locateDocument = $request->getParameter('locateDocument');
-		$this->treeType = $request->getParameter('treetype', 'wtree');
+		$this->treeType = $request->getParameter('treetype', 0);
 		
 		if ($this->pageSize <= 0)
 		{
@@ -477,7 +477,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		}
 	}
 	/**
-	 * @return string wtree, wlist
+	 * @return string DocumentHelper::[MODE_ITEM MODE_RESOURCE MODE_CUSTOM MODE_ICON]
 	 */
 	protected function getTreeType()
 	{

@@ -85,7 +85,8 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		$model = $document->getPersistentModel();
 		foreach ($model->getPropertiesInfos() as $propertyName => $propertyValue)
 		{
-			if ($propertyValue->getType() === $modelName && $propertyValue->isTreeNode())
+			/* @var $propertyValue PropertyInfo */
+			if ($propertyValue->isDocument() &&  $propertyValue->getDocumentType() === $modelName && $propertyValue->getTreeNode())
 			{
 				return $propertyName;
 			}
@@ -93,7 +94,8 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		
 		foreach ($model->getInverseProperties() as $propertyName => $propertyValue)
 		{
-			if ($propertyValue->getType() === $modelName && $propertyValue->isTreeNode())
+			/* @var $propertyValue PropertyInfo */
+			if ($propertyValue->getDocumentType() === $modelName && $propertyValue->getTreeNode())
 			{
 				return $propertyName;
 			}

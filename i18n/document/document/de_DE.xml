@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.document.document" lcid="de_DE">
-  <key id="label">Name</key>
-  <key id="author">Autor</key>
-  <key id="creationdate">Erstellungsdatum</key>
-  <key id="modificationdate">Änderungsdatum</key>
-  <key id="publicationstatus">Status</key>
-  <key id="startpublicationdate">Anfangsdatum der Veröffentlichung</key>
-  <key id="endpublicationdate">Enddatum der Veröffentlichung</key>
-  <key id="lang">Sprache</key>
+	<key id="label">Name</key>
+	<key id="author">Autor</key>
+	<key id="creationdate">Erstellungsdatum</key>
+	<key id="modificationdate">Änderungsdatum</key>
+	<key id="publicationstatus">Status</key>
+	<key id="startpublicationdate">Anfangsdatum der Veröffentlichung</key>
+	<key id="endpublicationdate">Enddatum der Veröffentlichung</key>
+	<key id="lang">Sprache</key>
 </i18n>

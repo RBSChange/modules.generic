@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.document.rootfolder" lcid="de_DE">
-  <key id="document-name">Hauptordner</key>
-  <key id="edition-form-title">Eigenschaften Hauptordner</key>
-  <key id="label">Name</key>
+	<key id="document-name">Hauptordner</key>
+	<key id="edition-form-title">Eigenschaften Hauptordner</key>
+	<key id="label">Name</key>
 </i18n>

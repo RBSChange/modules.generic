@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.browsers" lcid="fr_FR">
-  <key id="all_all">inconnu</key>
-  <key id="elektra_all">Opera 4 à 6</key>
-  <key id="presto_all">Opera 7 ou +</key>
-  <key id="gecko_all">Firefox</key>
-  <key id="gecko_2">Firefox 2</key>
-  <key id="gecko_3">Firefox 3 ou 3.5</key>
-  <key id="gecko_4">Firefox 4 ou +</key>
-  <key id="khtml_all">Safari, chrome ou konqueror (WebKit)</key>
-  <key id="mariner_all">Netscape</key>
-  <key id="tasman_all">Internet Explorer 5.5 Mac</key>
-  <key id="trident_3">Internet Explorer 5.5 Windows</key>
-  <key id="trident_4">Internet Explorer 6.0</key>
-  <key id="trident_5">Internet Explorer 7.0</key>
-  <key id="trident_6">Internet Explorer 8.0</key>
-  <key id="trident_7">Internet Explorer 9.0</key>
-  <key id="trident_all">Internet Explorer</key>
-  <key id="iphone_all">iPhone ou iPod</key>
+	<key id="all_all">inconnu</key>
+	<key id="elektra_all">Opera 4 à 6</key>
+	<key id="presto_all">Opera 7 ou +</key>
+	<key id="gecko_all">Firefox</key>
+	<key id="gecko_2">Firefox 2</key>
+	<key id="gecko_3">Firefox 3 ou 3.5</key>
+	<key id="gecko_4">Firefox 4 ou +</key>
+	<key id="khtml_all">Safari, chrome ou konqueror (WebKit)</key>
+	<key id="mariner_all">Netscape</key>
+	<key id="tasman_all">Internet Explorer 5.5 Mac</key>
+	<key id="trident_3">Internet Explorer 5.5 Windows</key>
+	<key id="trident_4">Internet Explorer 6.0</key>
+	<key id="trident_5">Internet Explorer 7.0</key>
+	<key id="trident_6">Internet Explorer 8.0</key>
+	<key id="trident_7">Internet Explorer 9.0</key>
+	<key id="trident_all">Internet Explorer</key>
+	<key id="iphone_all">iPhone ou iPod</key>
 </i18n>

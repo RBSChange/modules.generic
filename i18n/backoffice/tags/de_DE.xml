@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.backoffice.tags" lcid="de_DE">
-  <key id="missing-required-tags">einige benötigte Tags sind nicht zugeordnet worden:</key>
+	<key id="missing-required-tags">einige benötigte Tags sind nicht zugeordnet worden:</key>
 </i18n>

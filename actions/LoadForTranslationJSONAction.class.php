@@ -31,7 +31,7 @@ class generic_LoadForTranslationJSONAction extends change_JSONAction
 	
 		foreach ($supportedLanguages as $lang) 
 		{
-			$result['langslabel'][$lang] = f_Locale::translateUI('&modules.uixul.bo.languages.'.ucfirst($lang).';');
+			$result['langslabel'][$lang] = LocaleService::getInstance()->trans('m.uixul.bo.languages.'.strtolower($lang), array('ucf'));
 			if ($document->isLangAvailable($lang))
 			{
 				if ($lang === $vo)

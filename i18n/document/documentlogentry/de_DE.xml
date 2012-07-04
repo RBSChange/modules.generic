@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.document.documentlogentry" lcid="de_DE">
-  <key id="document-name">Präferenzen</key>
-  <key id="edition-form-title">Bearbeitung einer Log Linie</key>
-  <key id="label">Name</key>
-  <key id="label-help">Name</key>
-  <key id="documentid">Identifikation des Dokuments</key>
-  <key id="documentid-help">Identifikation des Dokuments</key>
-  <key id="decision">Entscheidung</key>
-  <key id="decision-help">Entscheidung</key>
-  <key id="actor">Darsteller</key>
-  <key id="actor-help">Darsteller</key>
-  <key id="commentary">Kommentar</key>
-  <key id="commentary-help">Kommentar</key>
+	<key id="document-name">Präferenzen</key>
+	<key id="edition-form-title">Bearbeitung einer Log Linie</key>
+	<key id="label">Name</key>
+	<key id="label-help">Name</key>
+	<key id="documentid">Identifikation des Dokuments</key>
+	<key id="documentid-help">Identifikation des Dokuments</key>
+	<key id="decision">Entscheidung</key>
+	<key id="decision-help">Entscheidung</key>
+	<key id="actor">Darsteller</key>
+	<key id="actor-help">Darsteller</key>
+	<key id="commentary">Kommentar</key>
+	<key id="commentary-help">Kommentar</key>
 </i18n>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.errors.folder" lcid="en_GB">
-  <key id="cannot-delete-non-empty-node">You cannot delete a folder that has documents in it.</key>
+	<key id="cannot-delete-non-empty-node">You cannot delete a folder that has documents in it.</key>
 </i18n>

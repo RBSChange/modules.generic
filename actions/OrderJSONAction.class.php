@@ -15,7 +15,7 @@ class generic_OrderJSONAction extends change_JSONAction
 		
 		if (!$request->hasParameter('co'))
 		{
-			return $this->sendJSONError(f_Locale::translate("&modules.generic.backoffice.OrderChildrenInvalidParametersErrorMessage;"));
+			return $this->sendJSONError(LocaleService::getInstance()->trans("m.generic.backoffice.orderchildreninvalidparameterserrormessage", array('ucf')));
 		}
 		$childrenOrder = array_flip($request->getParameter('co'));
 		

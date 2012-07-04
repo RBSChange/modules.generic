@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.bo.general" lcid="de_DE">
-  <key id="module-name">Kern</key>
-  <key id="generalities">allgemeine Eigenschaften</key>
+	<key id="module-name">Kern</key>
+	<key id="generalities">allgemeine Eigenschaften</key>
 </i18n>

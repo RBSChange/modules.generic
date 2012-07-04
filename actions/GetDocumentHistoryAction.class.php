@@ -30,7 +30,7 @@ class generic_GetDocumentHistoryAction extends change_JSONAction
 		{
 			$logEntry = unserialize($row['info']);
 			$logEntry['entry_id'] = $row['entry_id'];
-			$logEntry['logdescription'] = f_Locale::translateUI('&modules.' . $row['module_name']. '.bo.useractionlogger.' .ucfirst(str_replace('.', '-',$row['action_name'])) .';', $logEntry);
+			$logEntry['logdescription'] = LocaleService::getInstance()->trans('m.' . $row['module_name']. '.bo.useractionlogger.' .strtolower(str_replace('.', '-',$row['action_name'])), array('ucf'), $logEntry);
 			$logEntry['entry_date'] = $row['entry_date'];
 			$logEntry['date'] = date_Formatter::toDefaultDateTimeBO(date_Converter::convertDateToLocal($row['entry_date']));
 			$logs[] = $logEntry;

@@ -34,13 +34,13 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 		$defId = $ps->getDefinitionPointForPackage($documentId, 'modules_'.$moduleName);
 		if ($defId === null)
 		{
-			$result["messageinfo"] = f_Locale::translateUI('&modules.generic.bo.general.Permissions-herited-rootfolder;'); 
+			$result["messageinfo"] = LocaleService::getInstance()->trans('m.generic.bo.general.permissions-herited-rootfolder', array('ucf')); 
 			$defId = ModuleService::getInstance()->getRootFolderId($moduleName);
 		}
 		else if ($defId != $documentId)
 		{
 			$defDoc = DocumentHelper::getDocumentInstance($defId);
-			$result["messageinfo"] = f_Locale::translateUI('&modules.generic.bo.general.Permissions-herited-from;', array('label' => $defDoc->getTreeNodeLabel())); 
+			$result["messageinfo"] = LocaleService::getInstance()->trans('m.generic.bo.general.permissions-herited-from', array('ucf'), array('label' => $defDoc->getTreeNodeLabel())); 
 		}
 
 		$result["DefNode"] = $defId;

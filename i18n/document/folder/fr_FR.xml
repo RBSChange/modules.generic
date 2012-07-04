@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.generic.document.folder" lcid="fr_FR">
-  <key id="document-name">dossier</key>
-  <key id="edition-form-title">propriétés du dossier</key>
-  <key id="label">libellé</key>
-  <key id="label-help">libellé du dossier</key>
-  <key id="description">description</key>
-  <key id="description-help">description du dossier</key>
+	<key id="document-name">dossier</key>
+	<key id="edition-form-title">propriétés du dossier</key>
+	<key id="label">libellé</key>
+	<key id="label-help">libellé du dossier</key>
+	<key id="description">description</key>
+	<key id="description-help">description du dossier</key>
 </i18n>

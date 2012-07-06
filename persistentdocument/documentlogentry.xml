@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/schema/persistentdocument-4.0.xsd" model-version="1.0" icon="document_notebook" use-publication-dates="false" backoffice-indexable="false" has-url="false">
 	<properties>
-		<property name="documentid" type="Integer" min-occurs="1" />
+		<property name="documentid" type="Integer" required="true" />
 		<property name="decision" type="String" />
-		<property name="actor" type="String" min-occurs="1" />
+		<property name="actor" type="String" required="true" />
 		<property name="commentary" type="LongString" />
 	</properties>
 	<statuses default="ACTIVE" />

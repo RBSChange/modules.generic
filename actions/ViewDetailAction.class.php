@@ -13,6 +13,7 @@ class generic_ViewDetailAction extends f_action_BaseAction
 		// Retrieve the page to display.
 		if ($document !== null)
 		{
+			$request->setParameter('detail_cmpref', $document->getId());
 			$page = $document->getDocumentService()->getDisplayPage($document);
 		}
 

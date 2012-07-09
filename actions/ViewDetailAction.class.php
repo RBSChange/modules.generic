@@ -13,6 +13,7 @@ class generic_ViewDetailAction extends change_Action
 		// Retrieve the page to display.
 		if ($document !== null)
 		{
+			$request->setParameter('detail_cmpref', $document->getId());
 			list($module, $action) = $document->getDocumentService()->getResolveDetail($document, $request);
 		}
 		else

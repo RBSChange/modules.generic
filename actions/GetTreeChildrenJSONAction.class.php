@@ -14,6 +14,8 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 	private $locateDocument;
 	
 	private $treeType = 'wtree'; //wlist, wmultitree, wmultilist
+	
+	private $orderBy;
 
 	/**
 	 * @param Context $context
@@ -29,6 +31,7 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 		$this->startIndex = $request->getParameter('startIndex', 0);
 		$this->locateDocument = $request->getParameter('locateDocument');
 		$this->treeType = $request->getParameter('treetype', 'wtree');
+		$this->orderBy = $request->getParameter('orderBy');
 		
 		if ($this->pageSize <= 0)
 		{
@@ -192,7 +195,8 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 			$totalCount = $this->getTotal();
 			$startIndex = $this->getStartIndex();
 			$locateDocumentId = $this->getLocateDocument();
-			$result = $document->getDocumentService()->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount);
+			$orderBy = $this->getOrderBy();
+			$result = $document->getDocumentService()->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount, $orderBy);
 			$this->setStartIndex($startIndex);
 			$this->setTotal($totalCount);
 			return $result;
@@ -538,6 +542,14 @@ class generic_GetTreeChildrenJSONAction extends f_action_BaseJSONAction
 	{
 		return $this->locateDocument;
 	}
+	
+	/**
+	 * @return string
+	 */
+	protected function getOrderBy()
+	{
+		return $this->orderBy;
+	}	
 	
 	protected function hasBlockClassNameFromType($type)
 	{

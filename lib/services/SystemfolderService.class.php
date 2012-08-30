@@ -23,15 +23,22 @@ class generic_SystemfolderService extends f_persistentdocument_DocumentService
 	}
 
 	/**
+	 * @param generic_persistentdocument_systemfolder $document
+	 */
+	protected function postDelete($document)
+	{
+		$package = $this->getPersistentProvider()->getSettingPackage($document->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
+		$this->getPersistentProvider()->setSettingValue($package, ModuleService::SETTING_SYSTEM_FOLDER_ID, '');
+	}
+	
+	/**
 	 * @param generic_persistentdocument_systemfolder $systemFolder
 	 * @return string
 	 */
 	public function getOwnerModuleName($systemFolder)
 	{
-		$package = ModuleService::getInstance()->getPersistentProvider()->getSettingPackage($systemFolder->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
-
+		$package = $this->getPersistentProvider()->getSettingPackage($systemFolder->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
 		list($owner, ) = explode('/', $package);
-
 		return ModuleService::getInstance()->getShortModuleName($owner);
 	}
 
@@ -41,10 +48,8 @@ class generic_SystemfolderService extends f_persistentdocument_DocumentService
 	 */
 	public function getRelatedModuleName($systemFolder)
 	{
-		$package = ModuleService::getInstance()->getPersistentProvider()->getSettingPackage($systemFolder->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
-
+		$package = $this->getPersistentProvider()->getSettingPackage($systemFolder->getId(), ModuleService::SETTING_SYSTEM_FOLDER_ID);
 		list(, $related) = explode('/', $package);
-
 		return ModuleService::getInstance()->getShortModuleName($related);
 	}
 }

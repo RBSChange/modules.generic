@@ -1,5 +1,4 @@
 <?php
-
 class generic_GetTreeChildrenJSONAction extends change_JSONAction
 {
 	private $config;
@@ -12,8 +11,8 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 	private $startIndex;
 	private $total;
 	private $locateDocument;
-	
-	private $treeType = 0; //DocumentHelper::MODE_*
+	private $treeType = 0; //DocumentHelper::MODE_*	
+	private $orderBy;
 
 	/**
 	 * @param change_Context $context
@@ -29,6 +28,7 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		$this->startIndex = $request->getParameter('startIndex', 0);
 		$this->locateDocument = $request->getParameter('locateDocument');
 		$this->treeType = $request->getParameter('treetype', 0);
+		$this->orderBy = $request->getParameter('orderBy');
 		
 		if ($this->pageSize <= 0)
 		{
@@ -194,7 +194,8 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 			$totalCount = $this->getTotal();
 			$startIndex = $this->getStartIndex();
 			$locateDocumentId = $this->getLocateDocument();
-			$result = $document->getDocumentService()->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount);
+			$orderBy = $this->getOrderBy();
+			$result = $document->getDocumentService()->getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $this->getPageSize(), $startIndex, $totalCount, $orderBy);
 			if (is_array($result))
 			{
 				$this->setStartIndex($startIndex);
@@ -535,6 +536,18 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		return $this->locateDocument;
 	}
 	
+	/**
+	 * @return string
+	 */
+	protected function getOrderBy()
+	{
+		return $this->orderBy;
+	}
+	
+	/**
+	 * @param string $type
+	 * @return boolean
+	 */
 	protected function hasBlockClassNameFromType($type)
 	{
 		$typeInfo = explode("_", $type);
@@ -542,7 +555,6 @@ class generic_GetTreeChildrenJSONAction extends change_JSONAction
 		{
 			$models = block_BlockService::getInstance()->getBlocksDocumentModelToInsert();
 			return isset($models[$typeInfo[0] . '_' . $typeInfo[1] .  '/' . $typeInfo[2]]);
-			
 		}
 		return false;
 	}

@@ -8,4 +8,6 @@
 	<key id="log-addtag-website">log addtag website</key>
 	<key id="addtag-menu">addtag.menu {tag} {documentlabel}</key>
 	<key id="log-addtag-menu">log addtag menu</key>
+	<key id="removetag-menu">removetag.menu {tag} {lang} {documentlabel}</key>
+	<key id="log-removetag-menu">log removetag menu</key>
 </i18n>

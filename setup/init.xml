@@ -6,7 +6,7 @@
 			<staticitem label="f.persistentdocument.status.draft" value="DRAFT" />
 			<staticitem label="f.persistentdocument.status.workflow" value="WORKFLOW" />
 			<staticitem label="f.persistentdocument.status.active" value="ACTIVE" />
-			<staticitem label="f.persistentdocument.status.publicated" value="PUBLICATED" />
+			<staticitem label="f.persistentdocument.status.published" value="PUBLISHED" />
 			<staticitem label="f.persistentdocument.status.deactivated" value="DEACTIVATED" />
 			<staticitem label="f.persistentdocument.status.correction" value="CORRECTION" />
 			<staticitem label="f.persistentdocument.status.deprecated" value="DEPRECATED" />

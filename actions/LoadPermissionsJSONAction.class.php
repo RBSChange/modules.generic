@@ -10,13 +10,15 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 		$document = $this->getDocumentInstanceFromRequest($request);
 		//Retrouve le document original
 		$document = DocumentHelper::getByCorrection($document);
-
 		
 		$requestedProperties = explode(',', $request->getParameter('documentproperties', ''));
 		$comps = $this->generateMappedRoleArray($document->getId());
 		$data = array("DefNode" => $comps["DefNode"]);
-		if (isset($comps['messageinfo'])) {$data['messageinfo'] = $comps['messageinfo'];}
-		foreach ($requestedProperties as $role) 
+		if (isset($comps['messageinfo']))
+		{
+			$data['messageinfo'] = $comps['messageinfo'];
+		}
+		foreach ($requestedProperties as $role)
 		{
 			if (isset($comps[$role]) && count($comps[$role]) > 0)
 			{
@@ -25,28 +27,34 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 		}
 		return $this->sendJSON($data);
 	}
-
+	
+	/**
+	 * @param integer $documentId
+	 * @return array
+	 */
 	private function generateMappedRoleArray($documentId)
 	{
 		$moduleName = $this->getModuleName();
 		$result = array();
 		$ps = change_PermissionService::getInstance();
-		$defId = $ps->getDefinitionPointForPackage($documentId, 'modules_'.$moduleName);
+		$defId = $ps->getDefinitionPointForPackage($documentId, 'modules_' . $moduleName);
 		if ($defId === null)
 		{
-			$result["messageinfo"] = LocaleService::getInstance()->trans('m.generic.bo.general.permissions-herited-rootfolder', array('ucf')); 
+			$result["messageinfo"] = LocaleService::getInstance()->trans('m.generic.bo.general.permissions-herited-rootfolder', array(
+				'ucf'));
 			$defId = ModuleService::getInstance()->getRootFolderId($moduleName);
 		}
 		else if ($defId != $documentId)
 		{
 			$defDoc = DocumentHelper::getDocumentInstance($defId);
-			$result["messageinfo"] = LocaleService::getInstance()->trans('m.generic.bo.general.permissions-herited-from', array('ucf'), array('label' => $defDoc->getTreeNodeLabel())); 
+			$result["messageinfo"] = LocaleService::getInstance()->trans('m.generic.bo.general.permissions-herited-from', array(
+				'ucf'), array('label' => $defDoc->getTreeNodeLabel()));
 		}
-
+		
 		$result["DefNode"] = $defId;
 		
-		$ACLs = $ps->getACLForNode($defId);
-
+		$ACLs = $this->getACLForNode($defId);
+		
 		foreach ($ACLs as $acl)
 		{
 			$roleName = $acl->getRole();
@@ -65,6 +73,15 @@ class generic_LoadPermissionsJSONAction extends change_JSONAction
 			}
 		}
 		return $result;
+	}
+	
+	/**
+	 * @param integer $defId
+	 * @return f_permission_ACL[]
+	 */
+	protected function getACLForNode($defId)
+	{
+		return change_PermissionService::getInstance()->getACLForNode($defId);
 	}
 	
 	/**

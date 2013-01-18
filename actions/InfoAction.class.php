@@ -2,7 +2,6 @@
 class generic_InfoAction extends change_JSONAction
 {
 	/**
-	 * @see f_action_BaseAction::_execute()
 	 * @param change_Context $context
 	 * @param change_Request $request
 	 */
@@ -16,35 +15,40 @@ class generic_InfoAction extends change_JSONAction
 			{
 				$document = DocumentHelper::getDocumentInstance($documentId);
 				$vo = $document->getLang();
-				$rc->setLang($vo);
-				$resultInfo = array(
-					'id' => $document->getId(),
-					'model' => $document->getDocumentModelName(), 
-					'lang' => $vo
-				);
-				
-				DocumentHelper::completeBOAttributes($document, $resultInfo, DocumentHelper::MODE_ITEM);
-				if (!isset($resultInfo['icon']))
+				try
 				{
-					$resultInfo['icon'] = $document->getPersistentModel()->getIcon();
-				}
-				
-				$resultInfo['labels'] = array();
-				$resultInfo['labels'][$vo] = $resultInfo['label'];
-				unset($resultInfo['label']);				
-				if ($document->isLocalized())
-				{
-					foreach ($document->getI18nInfo()->getLangs() as $lang)
+					$rc->beginI18nWork($vo);
+					$resultInfo = array('id' => $document->getId(), 'model' => $document->getDocumentModelName(), 'lang' => $vo);
+					
+					DocumentHelper::completeBOAttributes($document, $resultInfo, DocumentHelper::MODE_ITEM);
+					if (!isset($resultInfo['icon']))
 					{
-						if (!isset($resultInfo['labels'][$lang]))
+						$resultInfo['icon'] = $document->getPersistentModel()->getIcon();
+					}
+					
+					$resultInfo['labels'] = array();
+					$resultInfo['labels'][$vo] = $resultInfo['label'];
+					unset($resultInfo['label']);
+					if ($document->isLocalized())
+					{
+						foreach ($document->getI18nInfo()->getLangs() as $lang)
 						{
-							$rc->beginI18nWork($lang);
-							$resultInfo['labels'][$lang] = $document->getTreeNodeLabel();
-							$rc->endI18nWork();
+							if (!isset($resultInfo['labels'][$lang]))
+							{
+								$rc->beginI18nWork($lang);
+								$resultInfo['labels'][$lang] = $document->getTreeNodeLabel();
+								$rc->endI18nWork();
+							}
 						}
 					}
+					$result[] = $resultInfo;
+					$rc->endI18nWork();
 				}
-				$result[] = $resultInfo;
+				catch (Exception $e)
+				{
+					$rc->endI18nWork($e);
+					throw $e;
+				}
 			}
 			catch (Exception $e)
 			{

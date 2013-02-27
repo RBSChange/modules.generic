@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.generic.bo.general" lcid="fr_FR">
-  <key id="module-name">noyau</key>
-  <key id="system-folder-name">noyau</key>
-  <key id="generalities">propriétés principales</key>
-  <key id="permissions-herited-rootfolder">affichage des droits hérité de la racine du module</key>
-  <key id="permissions-herited-from">affichage des droits hérité depuis {label}</key>
-  <key id="samples">exemples</key>
-  <key id="phase-development">développement</key>
-  <key id="phase-integration">intégration</key>
-  <key id="phase-production">production</key>
+	<key id="module-name">noyau</key>
+	<key id="system-folder-name">noyau</key>
+	<key id="generalities">propriétés principales</key>
+	<key id="permissions-herited-rootfolder">affichage des droits hérité de la racine du module</key>
+	<key id="permissions-herited-from">affichage des droits hérité depuis {label}</key>
+	<key id="samples">exemples</key>
+	<key id="phase-development">développement</key>
+	<key id="phase-integration">intégration</key>
+	<key id="phase-production">production</key>
 </i18n>

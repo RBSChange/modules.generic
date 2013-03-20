@@ -7,18 +7,18 @@ class generic_ViewDetailAction extends f_action_BaseAction
 	 */
 	public function _execute($context, $request)
 	{
-		$document = $this->getDocumentInstanceFromRequest($request);
+		$document = DocumentHelper::getDocumentInstanceIfExists($this->getDocumentIdFromRequest($request));
 		$page = null;
-
+		
 		// Retrieve the page to display.
 		if ($document !== null)
 		{
 			$request->setParameter('detail_cmpref', $document->getId());
 			$page = $document->getDocumentService()->getDisplayPage($document);
 		}
-
+		
 		if ($page !== null)
-		{	
+		{
 			foreach ($document->getPersistentModel()->getAncestorModelNames() as $modelName)
 			{
 				$parts = f_persistentdocument_PersistentDocumentModel::getModelInfo($modelName);
@@ -28,7 +28,7 @@ class generic_ViewDetailAction extends f_action_BaseAction
 					$request->setModuleParameter($moduleName, 'cmpref', $document->getId());
 				}
 			}
-		
+			
 			// Set pageref parameter into the request.
 			$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
 			$module = 'website';
@@ -39,37 +39,53 @@ class generic_ViewDetailAction extends f_action_BaseAction
 			$module = AG_ERROR_404_MODULE;
 			$action = AG_ERROR_404_ACTION;
 		}
-
+		
 		// Finally, forward the execution to $module / $action.
 		$context->getController()->forward($module, $action);
 		return View::NONE;
 	}
-
+	
 	/**
 	 * @param Request $request
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{
-		$moduleName = $this->getModuleName();
-		$modulesParams = $request->getParameter($moduleName.'Param');
-		$ids = $modulesParams['cmpref'];
-		if (!is_array($ids))
+		$tids = array();
+		$value = $request->getModuleParameter($this->getModuleName(), 'cmpref');
+		if (is_int($value))
 		{
-			$ids = explode(',', $ids);
+			$tids[] = $value;
+		}
+		elseif (is_array($value))
+		{
+			$tids = $value;
+		}
+		elseif (is_string($value))
+		{
+			$tids = explode(',', $value);
+		}
+		
+		$ids = array();
+		foreach ($tids as $id)
+		{
+			if (is_int($id))
+			{
+				$ids[] = $id;
+			}
 		}
 		return $ids;
 	}
-
+	
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function isSecure()
 	{
 		return false;
 	}
-
+	
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{
